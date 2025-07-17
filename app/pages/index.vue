@@ -1,5 +1,6 @@
 <template>
-  <main>
+  <!-- <main>
     <ImageGallery />
-  </main>
+  </main> -->
+  <div></div>
 </template>

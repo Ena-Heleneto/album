@@ -1,0 +1,28 @@
+/* .dark body {
+    background-color: #000000;
+    color: #dfe4ea;
+}
+
+.light body {
+    background-color: #ffffff;
+    color: #2f3542;
+}
+   */
+
+@font-face {
+  font-family: 'ZhuanZhuan';
+  src: url(/fonts/ZhuanZhuan/AaZhuNiWoMingMeiXiangChunTian-2.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'UbuntuMono';
+  src: url(/fonts/UbuntuMono/UbuntuMono-R.ttf) format('truetype');
+}
+
+.font-zhuanzhuan {
+  font-family: 'ZhuanZhuan', sans-serif;
+}
+
+.font-ubuntumono {
+  font-family: 'UbuntuMono', monospace;
+}

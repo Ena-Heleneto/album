@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useVModel } from '@vueuse/core';
+
 const props = defineProps({
   min: {
     type: Number,
