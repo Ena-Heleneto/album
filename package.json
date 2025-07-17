@@ -16,8 +16,6 @@
   },
   "dependencies": {
     "@nuxt/eslint": "^1.4.1",
-    "@nuxt/fonts": "^0.11.4",
-    "@nuxt/ui": "^2.22.0",
     "@nuxthub/core": "^0.9.0",
     "@vueuse/core": "^13.3.0",
     "@vueuse/nuxt": "^13.3.0",
@@ -68,8 +66,12 @@
   "pnpm": {
     "onlyBuiltDependencies": [
       "@morev/vue-transitions",
+      "better-sqlite3",
       "esbuild",
+      "sharp",
       "simple-git-hooks",
+      "unrs-resolver",
+      "vue-demi",
       "workerd"
     ]
   }

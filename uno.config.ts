@@ -1,5 +1,6 @@
-import { createLocalFontProcessor } from '@unocss/preset-web-fonts/local'
-import { defineConfig, presetAttributify, presetIcons, presetTypography, presetWebFonts, presetWind4, transformerDirectives, transformerVariantGroup } from 'unocss'
+// import { createLocalFontProcessor } from '@unocss/preset-web-fonts/local'
+import { defineConfig, presetAttributify, presetIcons, presetTypography,  presetWind4, transformerDirectives, transformerVariantGroup } from 'unocss'
+// import { defineConfig, presetAttributify, presetIcons, presetTypography, presetWebFonts, presetWind4, transformerDirectives, transformerVariantGroup } from 'unocss'
 import { presetScrollbarHide } from 'unocss-preset-scrollbar-hide'
 
 export default defineConfig({
@@ -20,13 +21,13 @@ export default defineConfig({
     presetIcons({ scale: 1.2 }),
     presetScrollbarHide(),
     presetTypography(),
-    presetWebFonts({
-      provider: 'none',
-      extendTheme: true,
-      fonts: { lemonada: { name: 'Lemonada' }, kuaiLe: { name: 'ZCOOL KuaiLe' } },
-      inlineImports: false,
-      processors: createLocalFontProcessor(),
-    }),
+    // presetWebFonts({
+    //   provider: 'none',
+    //   extendTheme: true,
+    //   // fonts: { lemonada: { name: 'Lemonada' }, kuaiLe: { name: 'ZCOOL KuaiLe' } },
+    //   inlineImports: false,
+    //   // processors: createLocalFontProcessor(),
+    // }),
   ],
   transformers: [
     transformerDirectives(),
