@@ -20,7 +20,7 @@
     "@vueuse/core": "^13.3.0",
     "@vueuse/nuxt": "^13.3.0",
     "better-sqlite3": "^12.2.0",
-    "nuxt": "^3.17.5",
+    "nuxt": "^4.0.1",
     "nuxt-auth-utils": "^0.5.20",
     "vue-advanced-cropper": "^2.8.9"
   },
