@@ -15,6 +15,7 @@
     "logs:preview": "nuxthub logs --preview"
   },
   "dependencies": {
+    "@cloudflare/puppeteer": "^1.0.4",
     "@nuxt/eslint": "^1.4.1",
     "@nuxthub/core": "^0.9.0",
     "@vueuse/core": "^13.3.0",
@@ -22,6 +23,7 @@
     "better-sqlite3": "^12.2.0",
     "nuxt": "^4.0.1",
     "nuxt-auth-utils": "^0.5.20",
+    "puppeteer": "^24.15.0",
     "vue-advanced-cropper": "^2.8.9"
   },
   "devDependencies": {
@@ -67,8 +69,10 @@
   "pnpm": {
     "onlyBuiltDependencies": [
       "@morev/vue-transitions",
+      "@parcel/watcher",
       "better-sqlite3",
       "esbuild",
+      "puppeteer",
       "sharp",
       "simple-git-hooks",
       "unrs-resolver",

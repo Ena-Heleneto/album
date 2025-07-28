@@ -18,21 +18,21 @@ export default defineNuxtConfig({
     'nuxt-headlessui',
     '@morev/vue-transitions/nuxt',
     '@nuxt/test-utils/module',
-    '@paper-ui/nuxt',
+    '@paper-ui/nuxt'
   ],
 
   imports: {
     presets: [
       { from: 'consola', imports: ['consola'] },
       { from: 'animejs', imports: ['animate', 'utils', 'waapi', 'createTimeline', { name: 'JSAnimation', type: true }] },
-      { from: 'three', imports: [{ name: '*', as: 'Three' }] }
+      { from: 'three', imports: [{ name: '*', as: 'Three' }] },
     ],
     imports: [],
-    dirs: ['stores']
+    dirs: ['stores'],
   },
   devtools: {
     enabled: true,
-    timeline: { enabled: true }
+    timeline: { enabled: true },
   },
 
   app: {
@@ -49,13 +49,13 @@ export default defineNuxtConfig({
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: appDescription },
-        { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' }
+        { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
       ],
-    }
+    },
   },
 
   css: [
-    '~/style/css/index.css'
+    '~/style/css/index.css',
   ],
 
   colorMode: { classSuffix: '' },
@@ -71,7 +71,7 @@ export default defineNuxtConfig({
     renderJsonPayloads: true,
     typedPages: true,
     componentIslands: true,
-    viewTransition: true,
+    viewTransition: true
   },
 
   compatibilityDate: '2024-07-30',
@@ -84,16 +84,12 @@ export default defineNuxtConfig({
       dirs: ['server/services/**', 'server/dto/**', 'server/entities/**', 'server/hooks/**', 'server/model/**', 'server/utils/**', 'server/factories/**'],
       presets: [
         { from: 'consola', imports: ['consola'] },
-        { from: 'zod', imports: ['z', { name: 'z', type: true }] }
+        { from: 'zod', imports: ['z', { name: 'z', type: true }] },
       ],
-    }
+    },
   },
 
-  hub: {
-    blob: true,
-    ai: true,
-    database: true,
-  },
+  hub: { blob: true, ai: true, database: true, browser: true, cache: true, kv: true, workers: true },
 
   auth: { hash: { scrypt: {} } },
 
@@ -105,10 +101,10 @@ export default defineNuxtConfig({
       nuxt: { sortConfigKeys: true },
       stylistic: {
         quotes: 'single',
-        commaDangle: 'never',
+        commaDangle: 'never'
       }
-    },
+    }
   },
   headlessui: { prefix: '' },
-  vueTransitions: {}
+  vueTransitions: {},
 })

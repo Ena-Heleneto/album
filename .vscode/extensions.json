@@ -13,5 +13,6 @@
     "antfu.pnpm-catalog-lens",
     "vivaxy.vscode-conventional-commits",
     "alefragnani.project-manager",
+    "github.vscode-github-actions",
   ]
 }
