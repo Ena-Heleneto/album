@@ -23,14 +23,14 @@
     "better-sqlite3": "^12.2.0",
     "nuxt": "^4.0.1",
     "nuxt-auth-utils": "^0.5.20",
+    "nuxt-mongoose": "1.0.6",
     "puppeteer": "^24.15.0",
     "vue-advanced-cropper": "^2.8.9"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.17.0",
     "@element-plus/nuxt": "^1.1.4",
-    "@iconify-json/simple-icons": "^1.2.5",
-    "@iconify/json": "^2.2.359",
+    "@iconify/json": "^2.2.363",
     "@morev/vue-transitions": "^3.0.5",
     "@nuxt/content": "^3.6.3",
     "@nuxt/devtools": "^2.5.0",

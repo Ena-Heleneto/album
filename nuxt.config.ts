@@ -1,6 +1,7 @@
 import process from 'node:process'
 import { appDescription } from './app/constants/index'
-import runtimeConfig from './runtime.config'
+import alias from './config/alias.config'
+import runtimeConfig from './config/runtime.config'
 
 export default defineNuxtConfig({
   modules: [
@@ -18,7 +19,8 @@ export default defineNuxtConfig({
     'nuxt-headlessui',
     '@morev/vue-transitions/nuxt',
     '@nuxt/test-utils/module',
-    '@paper-ui/nuxt'
+    '@paper-ui/nuxt',
+    'nuxt-mongoose',
   ],
 
   imports: {
@@ -30,10 +32,8 @@ export default defineNuxtConfig({
     imports: [],
     dirs: ['stores'],
   },
-  devtools: {
-    enabled: true,
-    timeline: { enabled: true },
-  },
+
+  devtools: { enabled: true, timeline: { enabled: true } },
 
   app: {
     head: {
@@ -54,13 +54,13 @@ export default defineNuxtConfig({
     },
   },
 
-  css: [
-    '~/style/css/index.css',
-  ],
+  css: ['~/style/css/index.css'],
 
   colorMode: { classSuffix: '' },
 
   runtimeConfig,
+
+  alias,
 
   devServer: { port: Number(process.env.NUXT_PORT) || 3000 },
 
@@ -81,7 +81,7 @@ export default defineNuxtConfig({
     prerender: { crawlLinks: true, routes: [], ignore: [] },
     experimental: { asyncContext: true, websocket: true, tasks: true, openAPI: true },
     imports: {
-      dirs: ['server/services/**', 'server/dto/**', 'server/entities/**', 'server/hooks/**', 'server/model/**', 'server/utils/**', 'server/factories/**'],
+      dirs: ['server/services/**','server/schemas/**', 'server/dto/**', 'server/entities/**', 'server/hooks/**', 'server/model/**', 'server/utils/**', 'server/factories/**'],
       presets: [
         { from: 'consola', imports: ['consola'] },
         { from: 'zod', imports: ['z', { name: 'z', type: true }] },
@@ -99,12 +99,12 @@ export default defineNuxtConfig({
     config: {
       standalone: false,
       nuxt: { sortConfigKeys: true },
-      stylistic: {
-        quotes: 'single',
-        commaDangle: 'never'
-      }
-    }
+      stylistic: { quotes: 'single', commaDangle: 'never' },
+    },
   },
   headlessui: { prefix: '' },
-  vueTransitions: {},
+
+  mongoose: { uri: process.env.MONGODB_URI, options: { maxPoolSize: 20, minPoolSize: 1, autoIndex: true }, modelsDir: 'models', devtools: true },
+
+  vueTransitions: {}
 })
