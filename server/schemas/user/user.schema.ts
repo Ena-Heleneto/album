@@ -1,5 +1,5 @@
+import type { Backend_Base_Document } from '&types/baseDocument.interface'
 import type { Types } from 'mongoose'
-import type { Backend_Base_Document } from '~~/server/types/baseDocument.interface'
 import { defineMongooseModel } from '#nuxt/mongoose'
 import { Schema } from 'mongoose'
 
@@ -21,11 +21,11 @@ export const User = defineMongooseModel<Backend_User_Document>({
     phone: { type: String, required: false },
     email: { type: String, required: false },
     password: { type: String, required: true },
-    deleted: { type: Boolean, default: false }
+    deleted: { type: Boolean, default: false },
   },
-  options: { timestamps: true },
+  options: { timestamps: true, id: true },
   hooks(_schema) {
     // 为用户模型应用用户相关的 hooks
     // HookCombiner.forUser<Backend_Menu_User>(_schema)
-  }
+  },
 })

@@ -20,17 +20,17 @@ export default defineNuxtConfig({
     '@morev/vue-transitions/nuxt',
     '@nuxt/test-utils/module',
     '@paper-ui/nuxt',
-    'nuxt-mongoose',
+    'nuxt-mongoose'
   ],
 
   imports: {
     presets: [
       { from: 'consola', imports: ['consola'] },
       { from: 'animejs', imports: ['animate', 'utils', 'waapi', 'createTimeline', { name: 'JSAnimation', type: true }] },
-      { from: 'three', imports: [{ name: '*', as: 'Three' }] },
+      { from: 'three', imports: [{ name: '*', as: 'Three' }] }
     ],
     imports: [],
-    dirs: ['stores'],
+    dirs: ['stores']
   },
 
   devtools: { enabled: true, timeline: { enabled: true } },
@@ -49,9 +49,9 @@ export default defineNuxtConfig({
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: appDescription },
-        { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
+        { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' }
       ],
-    },
+    }
   },
 
   css: ['~/style/css/index.css'],
@@ -71,7 +71,7 @@ export default defineNuxtConfig({
     renderJsonPayloads: true,
     typedPages: true,
     componentIslands: true,
-    viewTransition: true
+    viewTransition: true,
   },
 
   compatibilityDate: '2024-07-30',
@@ -81,12 +81,12 @@ export default defineNuxtConfig({
     prerender: { crawlLinks: true, routes: [], ignore: [] },
     experimental: { asyncContext: true, websocket: true, tasks: true, openAPI: true },
     imports: {
-      dirs: ['server/services/**','server/schemas/**', 'server/dto/**', 'server/entities/**', 'server/hooks/**', 'server/model/**', 'server/utils/**', 'server/factories/**'],
+      dirs: ['server/services/**', 'server/repositories/**', 'server/schemas/**', 'server/dto/**', 'server/entities/**', 'server/hooks/**', 'server/model/**', 'server/utils/**', 'server/factories/**'],
       presets: [
         { from: 'consola', imports: ['consola'] },
-        { from: 'zod', imports: ['z', { name: 'z', type: true }] },
+        { from: 'zod', imports: ['z', { name: 'z', type: true }] }
       ],
-    },
+    }
   },
 
   hub: { blob: true, ai: true, database: true, browser: true, cache: true, kv: true, workers: true },
@@ -99,12 +99,12 @@ export default defineNuxtConfig({
     config: {
       standalone: false,
       nuxt: { sortConfigKeys: true },
-      stylistic: { quotes: 'single', commaDangle: 'never' },
+      stylistic: { quotes: 'single', commaDangle: 'never' }
     },
   },
   headlessui: { prefix: '' },
 
   mongoose: { uri: process.env.MONGODB_URI, options: { maxPoolSize: 20, minPoolSize: 1, autoIndex: true }, modelsDir: 'models', devtools: true },
 
-  vueTransitions: {}
+  vueTransitions: {},
 })
