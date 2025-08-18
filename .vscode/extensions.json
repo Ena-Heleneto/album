@@ -3,7 +3,6 @@
     "vue.volar",
     "dbaeumer.vscode-eslint",
     "cpylua.language-postcss",
-    "bradlc.vscode-tailwindcss",
     "yoavbls.pretty-ts-errors",
     "antfu.iconify",
     "antfu.unocss",
@@ -12,6 +11,6 @@
     "dbaeumer.vscode-eslint",
     "antfu.pnpm-catalog-lens",
     "vivaxy.vscode-conventional-commits",
-    "github.vscode-github-actions",
+    "github.vscode-github-actions"
   ]
 }

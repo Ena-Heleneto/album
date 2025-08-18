@@ -43,5 +43,8 @@
   "iconify.annotations": true,
   "iconify.inplace": true,
   "editor.tabSize": 2,
-  "files.autoSave": "afterDelay"
+  "files.autoSave": "afterDelay",
+  "i18n-ally.localesPaths": [
+    "i18n/locales",
+  ]
 }

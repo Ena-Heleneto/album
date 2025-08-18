@@ -2,5 +2,7 @@
   <!-- <main>
     <ImageGallery />
   </main> -->
-  <div></div>
+  <div>
+    index
+  </div>
 </template>

@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="size-screen">
+    <DefaultHeader />
     <slot />
   </div>
 </template>
