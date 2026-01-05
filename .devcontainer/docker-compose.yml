@@ -63,9 +63,9 @@ services:
   dev:
     image: mcr.microsoft.com/devcontainers/universal:latest
     container_name: workspace-devcontainer
-    working_dir: /workspaces/${localWorkspaceFolderBasename}
+    working_dir: /workspaces/${LOCAL_WORKSPACE_FOLDER_BASENAME}
     volumes:
-      - ..:/workspaces/${localWorkspaceFolderBasename}:cached
+      - ..:/workspaces/${LOCAL_WORKSPACE_FOLDER_BASENAME}:cached
       - pnpm-store:/home/vscode/.pnpm-store
     command: sleep infinity
     networks:
