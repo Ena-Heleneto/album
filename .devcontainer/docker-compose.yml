@@ -4,7 +4,7 @@ name: workspace-dev
 
 services:
   rustfs:
-    image: rustfs/rustfs:latest
+    image: rustfs/rustfs
     container_name: rustfs
     ports:
       - "9000:9000" 
@@ -22,7 +22,7 @@ services:
       - workspace-network
 
   redis:
-    image: redis:latest-alpine
+    image: redis
     container_name: redis
     ports:
       - "6379:6379"
