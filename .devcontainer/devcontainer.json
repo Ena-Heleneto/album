@@ -1,7 +1,8 @@
 {
   "dockerComposeFile": "./docker-compose.yml",
   "service": "dev",
-  "runServices": ["rustfs", "redis", "mongodb","dozzle"],
+  "runServices": ["rustfs", "redis", "mongodb", "dozzle"],
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-  "postCreateCommand": "npx pnpm i"
+  "postCreateCommand": "npx pnpm i",
+  "remoteUser": "root"
 }

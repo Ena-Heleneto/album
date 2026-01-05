@@ -50,5 +50,6 @@
     "loglevel",
     "mongosh",
     "rustfs"
-  ]
+  ],
+  "files.autoSave": "afterDelay"
 }
