@@ -16,8 +16,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "catalog:dev",
-    "@iconify-json/carbon": "catalog:icons",
-    "@iconify-json/twemoji": "catalog:icons",
+    "@iconify/json": "catalog:icons",
     "@nuxt/devtools": "catalog:build",
     "@nuxt/eslint": "catalog:build",
     "@nuxtjs/color-mode": "catalog:build",
@@ -30,11 +29,14 @@
     "eslint": "catalog:dev",
     "eslint-plugin-format": "catalog:dev",
     "nuxt": "catalog:build",
+    "nuxt-mongoose": "catalog:build",
     "pinia": "catalog:frontend",
+    "puppeteer": "catalog:ci",
     "typescript": "catalog:dev",
     "unocss": "catalog:build",
     "vue": "catalog:frontend",
-    "vue-tsc": "catalog:dev"
+    "vue-tsc": "catalog:dev",
+    "zod": "catalog:build"
   },
   "resolutions": {
     "@nuxt/devtools": "catalog:build",

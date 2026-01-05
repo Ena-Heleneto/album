@@ -42,5 +42,12 @@
   "interline-translate.knownPopularWordCount": 6000,
   "iconify.annotations": true,
   "iconify.inplace": true,
-  "typewriterAutoScroll.enable": false
+  "typewriterAutoScroll.enable": false,
+  "cSpell.words": [
+    "appendonly",
+    "healthcheck",
+    "loglevel",
+    "mongosh",
+    "rustfs"
+  ]
 }

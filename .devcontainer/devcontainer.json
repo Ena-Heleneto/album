@@ -1,0 +1,7 @@
+{
+  "dockerComposeFile": "./docker-compose.yml",
+  "service": "dev",
+  "runServices": ["rustfs", "redis", "mongodb"],
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "postCreateCommand": "corepack enable && pnpm -v || npm i -g pnpm && pnpm i"
+}

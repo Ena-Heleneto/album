@@ -1,4 +1,7 @@
 packages: []
+
+catalog:
+
 catalogs:
   build:
     '@nuxt/devtools': ^3.0.0-beta.2
@@ -11,9 +14,13 @@ catalogs:
     '@vite-pwa/nuxt': ^1.0.7
     '@vueuse/nuxt': ^14.0.0
     nuxt: ^4.2.0
+    nuxt-mongoose: ^1.0.6
     unocss: ^66.5.4
     unplugin: ^2.3.10
     vite: ^7.1.12
+    zod: ^4.3.5
+  ci:
+    puppeteer: ^24.34.0
   dev:
     '@antfu/eslint-config': ^6.1.0
     eslint: ^9.38.0
@@ -25,9 +32,9 @@ catalogs:
     pinia: ^3.0.3
     vue: ^3.5.22
   icons:
-    '@iconify-json/carbon': ^1.2.14
-    '@iconify-json/twemoji': ^1.2.4
+    '@iconify/json': ^2.2.425
 onlyBuiltDependencies:
   - '@parcel/watcher'
   - esbuild
+  - puppeteer
   - unrs-resolver
