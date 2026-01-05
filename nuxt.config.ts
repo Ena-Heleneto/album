@@ -1,114 +1,77 @@
-import process from 'node:process'
+import { pwa } from './app/config/pwa'
 import { appDescription } from './app/constants/index'
-import runtimeConfig from './runtime.config'
 
 export default defineNuxtConfig({
   modules: [
-    '@nuxthub/core',
-    '@nuxt/eslint',
     '@vueuse/nuxt',
-    'nuxt-auth-utils',
     '@unocss/nuxt',
     '@pinia/nuxt',
-    'pinia-plugin-persistedstate/nuxt',
     '@nuxtjs/color-mode',
-    '@nuxt/content',
-    '@element-plus/nuxt',
-    'nuxt-swiper',
-    'nuxt-headlessui',
-    '@morev/vue-transitions/nuxt',
-    '@nuxt/test-utils/module',
-    '@paper-ui/nuxt',
+    '@vite-pwa/nuxt',
+    '@nuxt/eslint',
   ],
 
-  imports: {
-    presets: [
-      { from: 'consola', imports: ['consola'] },
-      { from: 'animejs', imports: ['animate', 'utils', 'waapi', 'createTimeline', { name: 'JSAnimation', type: true }] },
-      { from: 'three', imports: [{ name: '*', as: 'Three' }] }
-    ],
-    imports: [],
-    dirs: ['stores']
-  },
   devtools: {
     enabled: true,
-    timeline: { enabled: true }
   },
 
   app: {
     head: {
       viewport: 'width=device-width,initial-scale=1',
-      script: [],
       link: [
-        // { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        // {
-        //   rel: 'stylesheet',
-        //   href: 'https://fonts.googleapis.com/css2?family=Lemonada&family=ZCOOL+KuaiLe&display=swap',
-        // },
+        { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
+        { rel: 'icon', type: 'image/svg+xml', href: '/nuxt.svg' },
+        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
       ],
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'description', content: appDescription },
-        { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' }
+        { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
+        { name: 'theme-color', media: '(prefers-color-scheme: light)', content: 'white' },
+        { name: 'theme-color', media: '(prefers-color-scheme: dark)', content: '#222222' },
       ],
-    }
+    },
   },
 
-  css: [
-    '~/style/css/index.css'
-  ],
+  colorMode: {
+    classSuffix: '',
+  },
 
-  colorMode: { classSuffix: '' },
-
-  runtimeConfig,
-
-  devServer: { port: Number(process.env.NUXT_PORT) || 3000 },
-
-  future: { compatibilityVersion: 4 },
+  future: {
+    compatibilityVersion: 4,
+  },
 
   experimental: {
+    // when using generate, payload js assets included in sw precache manifest
+    // but missing on offline, disabling extraction it until fixed
     payloadExtraction: false,
     renderJsonPayloads: true,
     typedPages: true,
-    componentIslands: true,
-    viewTransition: true,
   },
 
-  compatibilityDate: '2024-07-30',
+  compatibilityDate: '2024-08-14',
 
   nitro: {
-    esbuild: { options: { target: 'esnext' } },
-    prerender: { crawlLinks: true, routes: [], ignore: [] },
-    experimental: { asyncContext: true, websocket: true, tasks: true, openAPI: true },
-    imports: {
-      dirs: ['server/services/**', 'server/dto/**', 'server/entities/**', 'server/hooks/**', 'server/model/**', 'server/utils/**', 'server/factories/**'],
-      presets: [
-        { from: 'consola', imports: ['consola'] },
-        { from: 'zod', imports: ['z', { name: 'z', type: true }] }
-      ],
-    }
+    esbuild: {
+      options: {
+        target: 'esnext',
+      },
+    },
+    prerender: {
+      crawlLinks: false,
+      routes: ['/'],
+      ignore: ['/hi'],
+    },
   },
-
-  hub: {
-    blob: true,
-    ai: true,
-    database: true,
-  },
-
-  auth: { hash: { scrypt: {} } },
-
-  elementPlus: {},
 
   eslint: {
     config: {
       standalone: false,
-      nuxt: { sortConfigKeys: true },
-      stylistic: {
-        quotes: 'single',
-        commaDangle: 'never',
-      }
+      nuxt: {
+        sortConfigKeys: true,
+      },
     },
   },
-  headlessui: { prefix: '' },
-  vueTransitions: {}
+
+  pwa,
 })

@@ -1,79 +1,81 @@
-# NuxtHub Image Gallery Starter Template
+<p align="center">
+<img src="https://user-images.githubusercontent.com/11247099/140462375-7b7ac4db-35b7-453c-8a05-13d8d20282c4.png" width="600"/>
+</p>
 
-This starter lets you get started with [NuxtHub Blob](https://hub.nuxt.com/docs/storage/blob) in seconds.
+<h2 align="center">
+<a href="https://github.com/antfu/vitesse">Vitesse</a> for Nuxt 4
+</h2><br>
 
-[![Deploy to NuxtHub](https://hub.nuxt.com/button.svg)](https://admin.hub.nuxt.com/new?template=image-gallery)
-
-https://github.com/Flosciante/nuxt-image-gallery/assets/904724/6e2bafdf-f5a0-42cf-b1f8-1d11c6ec919f
+<p align="center">
+<br>
+<a href="https://vitesse-nuxt3.netlify.app/">🖥 Online Preview</a>
+<br><br>
+<a href="https://stackblitz.com/github/antfu/vitesse-nuxt"><img src="https://developer.stackblitz.com/img/open_in_stackblitz.svg" alt=""></a>
+</p>
 
 ## Features
 
-- 📷 Image upload and display with [`hubBlob()`](http://hub.nuxt.com/docs/storage/blob)
-- 🖼️ Image Filters: Apply a variety of filters to your images.
-- 💾 Saving: Save your images with applied filters.
-- 🌐 Cloud Storage: Blob powered by NuxtHub (cloudflare R2).
-- 🎠 Custom Carousel: Includes a custom carousel component that can be adapted for in-house use.
-- 🏃🏻 [View transition API](https://developer.chrome.com/docs/web-platform/view-transitions) The View Transitions API provides a mechanism for easily creating animated transitions between different DOM states while also updating the DOM contents in a single step.
-- 🔑 [Nuxt Auth Utils](https://github.com/Atinux/nuxt-auth-utils) Minimalist Authentication module for Nuxt exposing Vue composables and server utils.
+- 💚 [Nuxt 4](https://nuxt.com/) - SSR, ESR, File-based routing, components auto importing, modules, etc.
 
-## Stack
+- ⚡️ Vite - Instant HMR.
 
-- [NuxtHub](https://hub.nuxt.com) - A Nuxt toolkit to build fullstack applications on the edge
-- [NuxtUI](https://ui.nuxt.com/getting-started) - A UI Library for Modern Web Apps
-- [Nuxt Fonts](https://github.com/nuxt/fonts) - Plug-and-play custom web font optimization and configuration for Nuxt apps.
-- [VueUse](https://github.com/antfu/vueuse) - Collection of useful composition APIs
-- [ESLint](https://eslint.org/) with [@nuxt/eslint-config](https://github.com/nuxt/eslint), single quotes, no semi
-- [TypeScript](https://www.typescriptlang.org/)
+- 🎨 [UnoCSS](https://github.com/unocss/unocss) - The instant on-demand atomic CSS engine.
 
-## Setup
+- 😃 Use icons from any icon sets in Pure CSS, powered by [UnoCSS](https://github.com/unocss/unocss).
 
-1. Clone this repository to your local machine.
-2. Install dependencies using the command `pnpm install` or your favorite package manager.
-3. Run the application with the command `pnpm dev` or your favorite package manager.
+- 🔥 The `<script setup>` syntax.
 
-> If you don't have pnpm installed, run: `corepack enable pnpm`
+- 🍍 [State Management via Pinia](https://github.com/vuejs/pinia), see [./app/composables/user.ts](./app/composables/user.ts).
 
-## Environment Variables
+- 📑 [Layout system](./app/layouts).
 
-- `NUXT_ADMIN_PASSWORD` - A password to access the admin panel and upload images, will default to `admin` if not provided.
-- `NUXT_SESSION_PASSWORD` - A secret key for session encryption used by [nuxt-auth-utils](https://github.com/Atinux/nuxt-auth-utils), will be generated automatically if not provided in development mode.
+- 📥 APIs auto importing - for Composition API, VueUse and custom composables.
 
-## Development
+- 🏎 Zero-config cloud functions and deploy.
+
+- 🦾 TypeScript, of course.
+
+- 📲 [PWA](https://github.com/vite-pwa/nuxt) with offline support and auto-update behavior.
+
+## Plugins
+
+### Nuxt Modules
+
+- [VueUse](https://github.com/vueuse/vueuse) - collection of useful composition APIs.
+- [ColorMode](https://github.com/nuxt-modules/color-mode) - dark and Light mode with auto detection made easy with Nuxt.
+- [UnoCSS](https://github.com/unocss/unocss) - the instant on-demand atomic CSS engine.
+- [Pinia](https://github.com/vuejs/pinia) - intuitive, type safe, light and flexible Store for Vue.
+- [VitePWA](https://github.com/vite-pwa/nuxt) - zero-config PWA Plugin for Nuxt 4.
+- [DevTools](https://github.com/nuxt/devtools) - unleash Nuxt Developer Experience.
+
+## IDE
+
+We recommend using [VS Code](https://code.visualstudio.com/) with [Volar](https://github.com/johnsoncodehk/volar) to get the best experience (You might want to disable [Vetur](https://vuejs.github.io/vetur/) if you have it).
+
+## Variations
+
+- [vitesse](https://github.com/antfu/vitesse) - Opinionated Vite Starter Template
+- [vitesse-lite](https://github.com/antfu/vitesse-lite) - Lightweight version of Vitesse
+- [vitesse-nuxt-bridge](https://github.com/antfu/vitesse-nuxt-bridge) - Vitesse for Nuxt 2 with Bridge
+- [vitesse-webext](https://github.com/antfu/vitesse-webext) - WebExtension Vite starter template
+
+## Try it now!
+
+### Online
+
+<a href="https://stackblitz.com/github/antfu/vitesse-nuxt"><img src="https://developer.stackblitz.com/img/open_in_stackblitz.svg" alt=""></a>
+
+### GitHub Template
+
+[Create a repo from this template on GitHub](https://github.com/antfu/vitesse-nuxt/generate).
+
+### Clone to local
+
+If you prefer to do it manually with the cleaner git history
 
 ```bash
-pnpm dev
+npx degit antfu/vitesse-nuxt my-nuxt-app
+cd my-nuxt-app
+pnpm i # If you don't have pnpm installed, run: npm install -g pnpm
 ```
-
-### Remote Storage
-
-Once you deployed your project, you can connect to your remote database locally running:
-
-```bash
-pnpm dev --remote
-```
-
-### Deploy
-
-You can deploy this project on your Cloudflare account for free and with zero configuration using [NuxtHub](https://hub.nuxt.com).
-
-```bash
-npx nuxthub deploy
-```
-
-It's also possible to leverage Cloudflare Pages CI for deploying, learn more about the different options on https://hub.nuxt.com/docs/getting-started/deploy
-
-Learn more about remote storage on https://hub.nuxt.com/docs/getting-started/remote-storage
-
-## Template Starter
-
-This project is a template starter provided by NuxtHub. It's designed to help kickstart your NuxtHub files project.
-
-Check out the [deployment documentation](https://hub.nuxt.com/docs/getting-started/deploy) for more information.
-
-## Contribution
-
-Contributions are welcome! Feel free to open an issue to report a bug or submit a feature request via a pull request.
-
-## Credits
-
-Thanks to [Atinux](https://github.com/Atinux) for the contributions and advice provided.
+# base-dock
