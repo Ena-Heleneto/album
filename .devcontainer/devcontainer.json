@@ -2,6 +2,6 @@
   "dockerComposeFile": "./docker-compose.yml",
   "service": "dev",
   "runServices": ["rustfs", "redis", "mongodb","dozzle"],
-  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "workspaceFolder": "/workspaces/${LOCAL_WORKSPACE_FOLDER_BASENAME}",
   "postCreateCommand": "npx pnpm i"
 }
