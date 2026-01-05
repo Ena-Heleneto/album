@@ -63,15 +63,13 @@ services:
   dev:
     image: mcr.microsoft.com/devcontainers/universal:latest
     container_name: workspace-devcontainer
-    working_dir: /workspaces/${LOCAL_WORKSPACE_FOLDER_BASENAME}
+    working_dir: /workspaces/app
     volumes:
-      - ..:/workspaces/${LOCAL_WORKSPACE_FOLDER_BASENAME}:cached
+      - ..:/workspaces/app:cached
       - pnpm-store:/home/vscode/.pnpm-store
     command: sleep infinity
     networks:
       - workspace-network
-    env_file:
-      - ./.env
     depends_on:
       - redis
       - mongodb
