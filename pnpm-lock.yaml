@@ -67,9 +67,9 @@ catalogs:
       specifier: ^3.5.22
       version: 3.5.22
   icons:
-    '@iconify-json/twemoji':
-      specifier: ^0.0.0
-      version: 1.2.4
+    '@iconify/json':
+      specifier: ^2.2.425
+      version: 2.2.425
 
 overrides:
   '@nuxt/devtools': ^3.0.0-beta.2
@@ -85,11 +85,8 @@ importers:
       '@antfu/eslint-config':
         specifier: catalog:dev
         version: 6.1.0(@unocss/eslint-plugin@66.5.4(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3))(@vue/compiler-sfc@3.5.22)(eslint-plugin-format@1.0.2(eslint@9.38.0(jiti@2.6.1)))(eslint@9.38.0(jiti@2.6.1))(typescript@5.9.3)
-      '@iconify-json/twemoji':
-        specifier: catalog:icons
-        version: 1.2.4
       '@iconify/json':
-        specifier: ^2.2.425
+        specifier: catalog:icons
         version: 2.2.425
       '@nuxt/devtools':
         specifier: ^3.0.0-beta.2
@@ -1270,9 +1267,6 @@ packages:
 
   '@iconify-json/tabler@1.2.26':
     resolution: {integrity: sha512-92G+ZD70AZgeJf07JfQzH+isnai6DwPcMBuF/qL1F+xAxdXCJzGd3w2RmsRvOmB+w1ImmWEEDms50QivQIjd6g==}
-
-  '@iconify-json/twemoji@1.2.4':
-    resolution: {integrity: sha512-REYJeXhzaLktNe32DxJJf3t65sYC5KO9K0Jh+RApXRBAo1/IB+jBqd8rny2sXci+wtQLBEfD4z4AGCLBrTMGWA==}
 
   '@iconify/json@2.2.425':
     resolution: {integrity: sha512-RJcJeoLFAmKPr7e7bP7gw33ASBSONuFsiCg35cEvrf/s8DDG5+C9eSqOvIiggNwZwwjYeGNKIJ7RduJTWgN0IQ==}
@@ -8046,10 +8040,6 @@ snapshots:
       '@iconify/types': 2.0.0
 
   '@iconify-json/tabler@1.2.26':
-    dependencies:
-      '@iconify/types': 2.0.0
-
-  '@iconify-json/twemoji@1.2.4':
     dependencies:
       '@iconify/types': 2.0.0
 

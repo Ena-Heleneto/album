@@ -8,3 +8,4 @@ dist
 public/assets/fonts
 .cache
 */docker_volumes
+.pnpm-store

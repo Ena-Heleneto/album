@@ -3,5 +3,5 @@
   "service": "dev",
   "runServices": ["rustfs", "redis", "mongodb","dozzle"],
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-  "postCreateCommand": "corepack enable && pnpm -v || npm i -g pnpm && pnpm i"
+  "postCreateCommand": "npx pnpm i"
 }
