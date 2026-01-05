@@ -11,6 +11,16 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
   ],
 
+  imports: {
+    presets: [
+      { from: 'consola', imports: ['consola'] },
+      { from: 'animejs', imports: ['animate', 'utils', 'waapi', 'createTimeline', { name: 'JSAnimation', type: true }] },
+      { from: 'three', imports: [{ name: '*', as: 'Three' }] },
+    ],
+    imports: [],
+    dirs: ['stores'],
+  },
+
   devtools: {
     enabled: true,
   },
@@ -20,8 +30,8 @@ export default defineNuxtConfig({
       viewport: 'width=device-width,initial-scale=1',
       link: [
         { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
-        { rel: 'icon', type: 'image/svg+xml', href: '/nuxt.svg' },
-        { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
+        // { rel: 'icon', type: 'image/svg+xml', href: '/nuxt.svg' },
+        // { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
       ],
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -59,8 +69,15 @@ export default defineNuxtConfig({
     },
     prerender: {
       crawlLinks: false,
-      routes: ['/'],
-      ignore: ['/hi'],
+      routes: [],
+      ignore: [],
+    },
+    imports: {
+      dirs: ['server/services/**', 'server/repositories/**', 'server/schemas/**', 'server/dto/**', 'server/entities/**', 'server/hooks/**', 'server/model/**', 'server/utils/**', 'server/factories/**'],
+      presets: [
+        { from: 'consola', imports: ['consola'] },
+        { from: 'zod', imports: ['z', { name: 'z', type: true }] },
+      ],
     },
   },
 
