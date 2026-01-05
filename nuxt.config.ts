@@ -47,6 +47,13 @@ export default defineNuxtConfig({
     classSuffix: '',
   },
 
+  runtimeConfig: {
+    // redis: { host: 'redis', port: 6379 },
+    // mongoose: {
+    //   uri: 'mongodb://root:password@mongodb:27017/admin',
+    // },
+  },
+
   devServer: {
     host: '0.0.0.0',
   },
@@ -82,6 +89,10 @@ export default defineNuxtConfig({
         { from: 'consola', imports: ['consola'] },
         { from: 'zod', imports: ['z', { name: 'z', type: true }] },
       ],
+    },
+    storage: {
+      redis: { driver: 'redis', host: 'redis', port: 6379 },
+      mongodb: { connectionString: 'mongodb://root:password@mongodb:27017/admin' },
     },
   },
 

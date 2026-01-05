@@ -3,8 +3,7 @@
   "service": "dev",
   "runServices": ["rustfs", "redis", "mongodb", "dozzle"],
   "workspaceFolder": "/workspaces/app",
-   "postCreateCommand": "npx pnpm i",
-  "postStartCommand": "chown -R 1000:1000 .devcontainer/docker_volumes/rustfs || true",
+  "postCreateCommand": "npx pnpm i",
   "remoteUser": "root",
   "shutdownAction": "stopCompose"
 }
