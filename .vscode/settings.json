@@ -45,6 +45,7 @@
   "typewriterAutoScroll.enable": false,
   "cSpell.words": [
     "appendonly",
+    "dozzle",
     "healthcheck",
     "loglevel",
     "mongosh",
