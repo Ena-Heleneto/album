@@ -47,6 +47,10 @@ export default defineNuxtConfig({
     classSuffix: '',
   },
 
+  devServer: {
+    host: '0.0.0.0',
+  },
+
   future: {
     compatibilityVersion: 4,
   },

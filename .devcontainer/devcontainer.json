@@ -4,5 +4,6 @@
   "runServices": ["rustfs", "redis", "mongodb", "dozzle"],
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "postCreateCommand": "npx pnpm i",
+  "postStartCommand": "cd .devcontainer && chown -R 1000:1000 docker_volumes/rustfs && docker compose up -d rustfs redis mongodb dozzle",
   "remoteUser": "root"
 }

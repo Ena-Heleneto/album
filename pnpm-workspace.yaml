@@ -1,6 +1,6 @@
 packages: []
 
-catalog: null
+catalog:
 
 catalogs:
   build:
@@ -23,6 +23,7 @@ catalogs:
     puppeteer: ^24.34.0
   dev:
     '@antfu/eslint-config': ^6.1.0
+    baseline-browser-mapping: ^2.9.11
     eslint: ^9.38.0
     eslint-plugin-format: ^1.0.2
     typescript: ^5.9.3

@@ -6,6 +6,9 @@
     "csstools.postcss",
     "dbaeumer.vscode-eslint",
     "vue.volar",
-    "antfu.pnpm-catalog-lens"
+    "antfu.pnpm-catalog-lens",
+    "buildwithlayer.mongodb-integration-expert-qs6db",
+    "cweijan.vscode-redis-client",
+    "antfu.browse-lite"
   ]
 }
