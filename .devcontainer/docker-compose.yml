@@ -61,7 +61,7 @@ services:
       retries: 10
 
   dev:
-    image: mcr.microsoft.com/devcontainers/universal:2
+    image: mcr.microsoft.com/devcontainers/typescript-node
     container_name: workspace-devcontainer
     working_dir: /workspaces/${LOCAL_WORKSPACE_FOLDER_BASENAME}
     volumes:
