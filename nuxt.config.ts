@@ -21,9 +21,7 @@ export default defineNuxtConfig({
     dirs: ['stores'],
   },
 
-  devtools: {
-    enabled: true,
-  },
+  devtools: { enabled: true },
 
   app: {
     head: {
@@ -43,20 +41,11 @@ export default defineNuxtConfig({
     },
   },
 
-  colorMode: {
-    classSuffix: '',
-  },
+  colorMode: { classSuffix: '' },
 
-  runtimeConfig: {
-    // redis: { host: 'redis', port: 6379 },
-    // mongoose: {
-    //   uri: 'mongodb://root:password@mongodb:27017/admin',
-    // },
-  },
+  runtimeConfig: { },
 
-  devServer: {
-    host: '0.0.0.0',
-  },
+  devServer: { host: '0.0.0.0', port: 3001 },
 
   future: {
     compatibilityVersion: 4,
@@ -68,16 +57,13 @@ export default defineNuxtConfig({
     payloadExtraction: false,
     renderJsonPayloads: true,
     typedPages: true,
+    asyncContext: true,
   },
 
   compatibilityDate: '2024-08-14',
 
   nitro: {
-    esbuild: {
-      options: {
-        target: 'esnext',
-      },
-    },
+    esbuild: { options: { target: 'esnext' } },
     prerender: {
       crawlLinks: false,
       routes: [],
@@ -92,16 +78,29 @@ export default defineNuxtConfig({
     },
     storage: {
       redis: { driver: 'redis', host: 'redis', port: 6379 },
-      mongodb: { connectionString: 'mongodb://root:password@mongodb:27017/admin' },
+      mongodb: {
+        driver: 'mongodb',
+        connectionString: 'mongodb://album:album@127.0.0.1:27017/album?authSource=album',
+        databaseName: 'album',
+      },
+    },
+    watchOptions: {
+      ignored: ['**/.devcontainer/docker_volumes/**'],
+    },
+  },
+
+  vite: {
+    server: {
+      watch: {
+        ignored: ['**/.devcontainer/docker_volumes/**'],
+      },
     },
   },
 
   eslint: {
     config: {
       standalone: false,
-      nuxt: {
-        sortConfigKeys: true,
-      },
+      nuxt: { sortConfigKeys: true },
     },
   },
 

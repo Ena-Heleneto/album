@@ -58,6 +58,7 @@ services:
     container_name: mongodb
     ports:
       - "27017:27017"
+    user: "1000:1000"
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: password
@@ -72,6 +73,18 @@ services:
       interval: 10s
       timeout: 5s
       retries: 10
+
+    depends_on:
+      mongo-fix-perms:
+        condition: service_completed_successfully
+
+  mongo-fix-perms:
+    image: alpine
+    command: sh -c "chown -R 1000:1000 /data/db"
+    volumes:
+      - ../docker_volumes/mongodb:/data/db
+    networks:
+      - album-workspace-network
 
   dozzle:
     container_name: dozzle

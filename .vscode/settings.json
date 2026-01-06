@@ -49,7 +49,10 @@
     "healthcheck",
     "loglevel",
     "mongosh",
+    "nitropack",
     "rustfs"
   ],
-  "files.autoSave": "afterDelay"
+  "files.autoSave": "afterDelay",
+  "remote.autoForwardPorts": true,
+  "remote.autoForwardPortsSource": "hybrid"
 }
