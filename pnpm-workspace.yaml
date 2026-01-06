@@ -14,8 +14,8 @@ catalogs:
     '@vite-pwa/nuxt': ^1.0.7
     '@vueuse/nuxt': ^14.0.0
     consola: ^3.4.2
-    mongodb: ^7.0.0
     nuxt: ^4.2.0
+    nuxt-mongoose: 1.0.6
     unocss: ^66.5.4
     unplugin: ^2.3.10
     vite: ^7.1.12

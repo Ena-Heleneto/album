@@ -1,15 +1,9 @@
+import process from 'node:process'
 import { pwa } from './app/config/pwa'
 import { appDescription } from './app/constants/index'
 
 export default defineNuxtConfig({
-  modules: [
-    '@vueuse/nuxt',
-    '@unocss/nuxt',
-    '@pinia/nuxt',
-    '@nuxtjs/color-mode',
-    '@vite-pwa/nuxt',
-    '@nuxt/eslint',
-  ],
+  modules: ['@vueuse/nuxt', '@unocss/nuxt', '@pinia/nuxt', '@nuxtjs/color-mode', '@vite-pwa/nuxt', '@nuxt/eslint', 'nuxt-mongoose'],
 
   imports: {
     presets: [
@@ -47,9 +41,7 @@ export default defineNuxtConfig({
 
   devServer: { host: '0.0.0.0', port: 3001 },
 
-  future: {
-    compatibilityVersion: 4,
-  },
+  future: { compatibilityVersion: 4 },
 
   experimental: {
     // when using generate, payload js assets included in sw precache manifest
@@ -102,6 +94,13 @@ export default defineNuxtConfig({
       standalone: false,
       nuxt: { sortConfigKeys: true },
     },
+  },
+
+  mongoose: {
+    uri: process.env.NUXT_MONGOOSE_URI,
+    options: { maxPoolSize: 20, minPoolSize: 1, autoIndex: true },
+    modelsDir: 'models',
+    devtools: true,
   },
 
   pwa,

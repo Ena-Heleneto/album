@@ -50,6 +50,7 @@
     "loglevel",
     "mongosh",
     "nitropack",
+    "NUXT",
     "rustfs"
   ],
   "files.autoSave": "afterDelay",

@@ -14,10 +14,10 @@ export default defineEventHandler(async (_event) => {
 
   // return { success: true }
 
-  const { mongoDb } = useNitroApp()
-  const collection = mongoDb.collection('unstorage')
+  // const { mongoDb } = useNitroApp()
+  // const collection = mongoDb.collection('unstorage')
 
-  const doc = await collection.insertOne({ message: '12345', createdAt: new Date().toISOString() })
-  consola.info('Presign upload endpoint called, doc:', doc)
-  return { doc }
+  // const doc = await collection.insertOne({ message: '12345', createdAt: new Date().toISOString() })
+  // consola.info('Presign upload endpoint called, doc:', doc)
+  // return { doc }
 })
