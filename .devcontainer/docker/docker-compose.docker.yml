@@ -12,12 +12,12 @@ services:
       RUSTFS_SECRET_KEY: SECRET
 
     volumes:
-      - ./docker_volumes/rustfs/data:/data
-      - ./docker_volumes/rustfs/logs:/logs
+      - ../docker_volumes/rustfs/data:/data
+      - ../docker_volumes/rustfs/logs:/logs
     user: "1000:1000"
     restart: unless-stopped
     networks:
-      - workspace-network
+      - album-workspace-network
     depends_on:
       fix-perms:
         condition: service_completed_successfully
@@ -26,10 +26,10 @@ services:
     image: alpine
     command: sh -c "chown -R 1000:1000 /data /logs"
     volumes:
-      - ./docker_volumes/rustfs/data:/data
-      - ./docker_volumes/rustfs/logs:/logs
+      - ../docker_volumes/rustfs/data:/data
+      - ../docker_volumes/rustfs/logs:/logs
     networks:
-      - workspace-network
+      - album-workspace-network
 
 
   redis:
@@ -43,10 +43,10 @@ services:
       --save 60 1
       --loglevel warning
     volumes:
-      - ./docker_volumes/redis:/data
+      - ../docker_volumes/redis:/data
     restart: unless-stopped
     networks:
-      - workspace-network
+      - album-workspace-network
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 5s
@@ -62,11 +62,11 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: password
     volumes:
-      - ./docker_volumes/mongodb:/data/db
-      - ./script/mongodb/init:/docker-entrypoint-initdb.d:ro
+      - ../docker_volumes/mongodb:/data/db
+      - ../scripts/mongodb/init:/docker-entrypoint-initdb.d:ro
     restart: unless-stopped
     networks:
-      - workspace-network
+      - album-workspace-network
     healthcheck:
       test: ["CMD", "mongosh", "--quiet", "mongodb://localhost:27017/admin", "--eval", "db.runCommand({ ping: 1 })"]
       interval: 10s
@@ -82,7 +82,7 @@ services:
       - pnpm-store:/home/vscode/.pnpm-store
     command: sleep infinity
     networks:
-      - workspace-network
+      - album-workspace-network
     depends_on:
       - redis
       - mongodb
@@ -97,11 +97,11 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
-      - workspace-network
+      - album-workspace-network
   
 volumes:
   pnpm-store:
 
 networks:
-  workspace-network:
+  album-workspace-network:
     driver: bridge

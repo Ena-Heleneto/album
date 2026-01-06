@@ -1,0 +1,92 @@
+name: workspace-dev
+
+services:
+  rustfs:
+    image: rustfs/rustfs
+    container_name: rustfs
+    ports:
+      - "9000:9000" 
+      - "9001:9001" 
+    environment:
+      RUSTFS_ACCESS_KEY: ACCESS
+      RUSTFS_SECRET_KEY: SECRET
+
+    volumes:
+      - ../docker_volumes/rustfs/data:/data
+      - ../docker_volumes/rustfs/logs:/logs
+    user: "1000:1000"
+    restart: unless-stopped
+    networks:
+      - album-workspace-network
+    depends_on:
+      fix-perms:
+        condition: service_completed_successfully
+
+  fix-perms:
+    image: alpine
+    command: sh -c "chown -R 1000:1000 /data /logs"
+    volumes:
+      - ../docker_volumes/rustfs/data:/data
+      - ../docker_volumes/rustfs/logs:/logs
+    networks:
+      - album-workspace-network
+
+
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - "6379:6379"
+    command: >
+      redis-server
+      --appendonly yes
+      --save 60 1
+      --loglevel warning
+    volumes:
+      - ../docker_volumes/redis:/data
+    restart: unless-stopped
+    networks:
+      - album-workspace-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - ../docker_volumes/mongodb:/data/db
+      - ../scripts/mongodb/init:/docker-entrypoint-initdb.d:ro
+    restart: unless-stopped
+    networks:
+      - album-workspace-network
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "mongodb://localhost:27017/admin", "--eval", "db.runCommand({ ping: 1 })"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  dozzle:
+    container_name: dozzle
+    image: amir20/dozzle:latest
+    restart: always
+    ports:
+      - 9999:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - album-workspace-network
+  
+volumes:
+  pnpm-store:
+
+networks:
+  album-workspace-network:
+    driver: bridge

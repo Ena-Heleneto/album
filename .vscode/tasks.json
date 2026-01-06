@@ -1,0 +1,30 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "wsl: docker compose up",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-lc",
+        "bash .bin/wsl-docker-compose-up.sh"
+      ],
+      "isBackground": false,
+      "problemMatcher": [],
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    },
+    {
+      "label": "wsl: docker compose down",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-lc",
+        "bash .bin/wsl-docker-compose-down.sh"
+      ],
+      "isBackground": false,
+      "problemMatcher": []
+    }
+  ]
+}

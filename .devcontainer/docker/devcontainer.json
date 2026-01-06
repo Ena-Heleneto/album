@@ -1,5 +1,5 @@
 {
-  "dockerComposeFile": "./docker-compose.yml",
+  "dockerComposeFile": "./docker-compose.docker.yml",
   "service": "dev",
   "runServices": ["rustfs", "redis", "mongodb", "dozzle"],
   "workspaceFolder": "/workspaces/app",
