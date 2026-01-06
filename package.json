@@ -30,6 +30,8 @@
     "consola": "catalog:build",
     "eslint": "catalog:dev",
     "eslint-plugin-format": "catalog:dev",
+    "moment": "^2.30.1",
+    "mongoose": "^9.1.2",
     "nuxt": "catalog:build",
     "nuxt-mongoose": "catalog:build",
     "pinia": "catalog:frontend",

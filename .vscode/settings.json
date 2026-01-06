@@ -51,7 +51,8 @@
     "mongosh",
     "nitropack",
     "NUXT",
-    "rustfs"
+    "rustfs",
+    "virtuals"
   ],
   "files.autoSave": "afterDelay",
   "remote.autoForwardPorts": true,

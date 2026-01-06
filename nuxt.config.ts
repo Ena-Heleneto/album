@@ -65,6 +65,7 @@ export default defineNuxtConfig({
       dirs: ['server/services/**', 'server/repositories/**', 'server/schemas/**', 'server/dto/**', 'server/entities/**', 'server/hooks/**', 'server/model/**', 'server/utils/**', 'server/factories/**'],
       presets: [
         { from: 'consola', imports: ['consola'] },
+        { from: 'moment', imports: [{ name: '*', as: 'moment' }] },
         { from: 'zod', imports: ['z', { name: 'z', type: true }] },
       ],
     },
