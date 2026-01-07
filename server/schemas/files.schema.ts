@@ -1,10 +1,11 @@
 import { defineMongooseModel } from '#nuxt/mongoose'
+import { ObjectId, Schema, Types } from 'mongoose'
 
 export const Files = defineMongooseModel({
   name: 'Files',
   schema: {
-    folder_id: { type: String, required: true },
-    bucket_id: { type: String, required: true },
+    folder_id: { type: Types.ObjectId, ref: 'Folders', required: true },
+    bucket_id: { type: Types.ObjectId, ref: 'Buckets', required: true },
     s3_key: { type: String, required: true, unique: true },
     file_name: { type: String, required: true },
     mime_type: { type: String, required: true },

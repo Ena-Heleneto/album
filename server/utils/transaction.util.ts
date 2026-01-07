@@ -8,7 +8,7 @@ export class Transaction {
     this.connection = connection
   }
 
-  async startTransaction(): Promise<void> {
+  async start(): Promise<void> {
     if (this.session) {
       throw new Error('Transaction already started on this instance')
     }
@@ -16,7 +16,7 @@ export class Transaction {
     this.session.startTransaction()
   }
 
-  getSession(): mongoose.mongo.ClientSession | undefined {
+  current(): mongoose.mongo.ClientSession | undefined {
     return this.session
   }
 
@@ -31,6 +31,13 @@ export class Transaction {
   async rollback(): Promise<void> {
     if (this.session) {
       await this.session.abortTransaction()
+      await this.session.endSession()
+      this.session = undefined
+    }
+  }
+
+  async end(): Promise<void> {
+    if (this.session) {
       await this.session.endSession()
       this.session = undefined
     }

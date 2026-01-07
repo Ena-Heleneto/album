@@ -1,7 +1,7 @@
 import { defineMongooseModel } from '#nuxt/mongoose'
 
-export const User = defineMongooseModel({
-  name: 'User',
+export const Folders = defineMongooseModel({
+  name: 'Folders',
   schema: {
     name: { type: String, required: true, unique: true },
     bucket_id: { type: String, required: true },

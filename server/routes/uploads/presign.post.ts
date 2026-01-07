@@ -1,23 +1,24 @@
+import type { Presign } from '~~/server/dto/uploads.dto'
+import { connection } from 'mongoose'
+
 export default defineEventHandler(async (_event) => {
-  // consola.info('Presign upload endpoint called')
+  const _transaction = new Transaction(connection)
+  const _UploadsService = new UploadsService(_transaction)
 
-  // // const storage = useStorage()
+  try {
+    await _transaction.start()
+    const body = await readValidatedBody<Presign>(_event, PresignDto.parse)
 
-  // // const key = `test:${Date.now()}`
+    await _UploadsService.insertFile(body)
+    await _transaction.commit()
+  }
+  catch (error) {
+    consola.fatal('Failed to insert file in presign endpoint', error)
+    await _transaction.rollback()
 
-  // await useStorage('mongodb:t1').setItem(`upload:${Date.now()}`, {
-  // message: '12345',
-  // createdAt: new Date().toISOString(),
-  // }, {
-  //   collectionName: 't2',
-  // })
-
-  // return { success: true }
-
-  // const { mongoDb } = useNitroApp()
-  // const collection = mongoDb.collection('unstorage')
-
-  // const doc = await collection.insertOne({ message: '12345', createdAt: new Date().toISOString() })
-  // consola.info('Presign upload endpoint called, doc:', doc)
-  // return { doc }
+    return { success: false }
+  }
+  finally {
+    await _transaction.end()
+  }
 })
