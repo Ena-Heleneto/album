@@ -13,7 +13,7 @@ export default defineEventHandler(async (_event) => {
     await _transaction.commit()
   }
   catch (error) {
-    consola.fatal('Failed to insert file in presign endpoint', error)
+    consola.fatal('Failed to insert file in presign exnddpoint', error)
     await _transaction.rollback()
 
     return { success: false }

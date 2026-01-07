@@ -1,7 +1,16 @@
 import { defineMongooseModel } from '#nuxt/mongoose'
-import { ObjectId, Schema, Types } from 'mongoose'
+import { Types } from 'mongoose'
 
-export const Files = defineMongooseModel({
+export interface FileDocument {
+  folder_id: Types.ObjectId
+  bucket_id: Types.ObjectId
+  s3_key: string
+  file_name: string
+  mime_type: string
+  file_size: number
+}
+
+export const Files = defineMongooseModel<FileDocument>({
   name: 'Files',
   schema: {
     folder_id: { type: Types.ObjectId, ref: 'Folders', required: true },

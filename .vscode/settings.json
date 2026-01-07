@@ -57,5 +57,6 @@
   ],
   "files.autoSave": "afterDelay",
   "remote.autoForwardPorts": true,
-  "remote.autoForwardPortsSource": "hybrid"
+  "remote.autoForwardPortsSource": "hybrid",
+  "chatgpt.openOnStartup": true
 }

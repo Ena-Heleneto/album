@@ -1,3 +1,5 @@
+import type { FileDocument } from '~~/server/schemas/files.schema'
+
 export class UploadsService {
   constructor(private transaction: Transaction) {
     this.#transaction = transaction
@@ -5,9 +7,7 @@ export class UploadsService {
 
   #transaction: Transaction
 
-  async insertFile(params: Partial<InstanceType<typeof Files>>) {
-    const _file = new Files({ ...params })
-    await _file.save({ session: this.#transaction.current() })
-    return _file
+  async insertFile(params: FileDocument) {
+    return await new Files({ ...params }).save({ session: this.#transaction.current() })
   }
 }

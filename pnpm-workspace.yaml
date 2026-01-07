@@ -14,6 +14,8 @@ catalogs:
     '@vite-pwa/nuxt': ^1.0.7
     '@vueuse/nuxt': ^14.0.0
     consola: ^3.4.2
+    moment: ^2.30.1
+    mongoose: ^9.1.2
     nuxt: ^4.2.0
     nuxt-mongoose: 1.0.6
     unocss: ^66.5.4
@@ -24,6 +26,7 @@ catalogs:
     puppeteer: ^24.34.0
   dev:
     '@antfu/eslint-config': ^6.1.0
+    '@openai/codex': ^0.79.0
     baseline-browser-mapping: ^2.9.11
     eslint: ^9.38.0
     eslint-plugin-format: ^1.0.2
