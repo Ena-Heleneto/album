@@ -1,9 +1,10 @@
 import process from 'node:process'
 import { pwa } from './app/config/pwa'
 import { appDescription } from './app/constants/index'
+import { runtimeConfig } from './runtime.config'
 
 export default defineNuxtConfig({
-  modules: ['@vueuse/nuxt', '@unocss/nuxt', '@pinia/nuxt', '@nuxtjs/color-mode', '@vite-pwa/nuxt', '@nuxt/eslint', 'nuxt-mongoose'],
+  modules: ['@vueuse/nuxt', '@unocss/nuxt', '@pinia/nuxt', '@nuxtjs/color-mode', '@vite-pwa/nuxt', '@nuxt/eslint', 'nuxt-mongoose', '@element-plus/nuxt'],
 
   imports: {
     presets: [
@@ -37,7 +38,9 @@ export default defineNuxtConfig({
 
   colorMode: { classSuffix: '' },
 
-  runtimeConfig: { },
+  runtimeConfig,
+
+  alias: { dayjs: 'dayjs' },
 
   devServer: { host: '0.0.0.0', port: 3001 },
 

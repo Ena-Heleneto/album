@@ -8,5 +8,9 @@ export const PresignDto = z.object({
   mime_type: z.string(),
   file_size: z.number(),
 })
-
 export type Presign = z.infer<typeof PresignDto>
+
+export const PresignPutDto = z.object({
+  'time-zone': z.string(),
+})
+export type PresignPut = z.infer<typeof PresignPutDto>

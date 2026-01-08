@@ -9,4 +9,4 @@ fi
 
 echo "[WSL] stopping docker compose for aux services"
 
-docker compose -f .devcontainer/wsl/docker-compose.wsl.yml down
+docker compose -f .devcontainer/wsl/docker-compose.wsl.yml down -v

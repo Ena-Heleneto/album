@@ -10,10 +10,9 @@ services:
     environment:
       RUSTFS_ACCESS_KEY: ACCESS
       RUSTFS_SECRET_KEY: SECRET
-
     volumes:
-      - ../docker_volumes/rustfs/data:/data
-      - ../docker_volumes/rustfs/logs:/logs
+      - rustfs-data:/data
+      - rustfs-logs:/logs
     user: "1000:1000"
     restart: unless-stopped
     networks:
@@ -26,11 +25,10 @@ services:
     image: alpine
     command: sh -c "chown -R 1000:1000 /data /logs"
     volumes:
-      - ../docker_volumes/rustfs/data:/data
-      - ../docker_volumes/rustfs/logs:/logs
+      - rustfs-data:/data
+      - rustfs-logs:/logs
     networks:
       - album-workspace-network
-
 
   redis:
     image: redis
@@ -43,7 +41,7 @@ services:
       --save 60 1
       --loglevel warning
     volumes:
-      - ../docker_volumes/redis:/data
+      - redis-data:/data
     restart: unless-stopped
     networks:
       - album-workspace-network
@@ -63,7 +61,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: password
     volumes:
-      - ../docker_volumes/mongodb:/data/db
+      - mongodb-data:/data/db
       - ../scripts/mongodb/init:/docker-entrypoint-initdb.d:ro
     restart: unless-stopped
     networks:
@@ -73,7 +71,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 10
-
     depends_on:
       mongo-fix-perms:
         condition: service_completed_successfully
@@ -82,7 +79,7 @@ services:
     image: alpine
     command: sh -c "chown -R 1000:1000 /data/db"
     volumes:
-      - ../docker_volumes/mongodb:/data/db
+      - mongodb-data:/data/db
     networks:
       - album-workspace-network
 
@@ -96,9 +93,12 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - album-workspace-network
-  
+
 volumes:
-  pnpm-store:
+  rustfs-data:
+  rustfs-logs:
+  redis-data:
+  mongodb-data:
 
 networks:
   album-workspace-network:
