@@ -18,16 +18,10 @@ export default defineConfig({
   presets: [
     presetWind4(),
     presetAttributify(),
-    presetIcons({
-      scale: 1.2,
-    }),
+    presetIcons({ scale: 1.2 }),
     presetTypography(),
     presetWebFonts({
-      fonts: {
-        sans: 'DM Sans',
-        serif: 'DM Serif Display',
-        mono: 'DM Mono',
-      },
+      fonts: { sans: 'DM Sans', serif: 'DM Serif Display', mono: 'DM Mono' },
       processors: createLocalFontProcessor(),
     }),
   ],

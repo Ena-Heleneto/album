@@ -8,6 +8,8 @@ useHead({
 
 <template>
   <VitePwaManifest />
+  <NuxtRouteAnnouncer />
+  <NuxtLoadingIndicator />
   <NuxtLayout>
     <NuxtPage />
   </NuxtLayout>

@@ -1,7 +1,7 @@
 import { S3Client } from '@aws-sdk/client-s3'
 import { NodeHttpHandler } from '@smithy/node-http-handler'
 
-declare module 'nitropack' { interface NitroApp { S3_CLIENT: S3Client }}
+declare module 'nitropack' { interface NitroApp { $S3_CLIENT: S3Client }}
 
 export default defineNitroPlugin(async (_nitroApp) => {
   const _useRuntimeConfig = useRuntimeConfig()
@@ -14,5 +14,5 @@ export default defineNitroPlugin(async (_nitroApp) => {
     forcePathStyle: true,
     requestHandler: new NodeHttpHandler({ connectionTimeout: 3000, socketTimeout: 5000 }),
   })
-  _nitroApp.S3_CLIENT = s3
+  _nitroApp.$S3_CLIENT = s3
 })
