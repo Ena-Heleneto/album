@@ -28,26 +28,26 @@
 
 import type { FilesCardProps } from 'vue-element-plus-x/types/FilesCard'
 
+// import { useLogger } from '@nuxt/kit'
 import { Attachments } from 'vue-element-plus-x'
 
 type SelfFilesCardProps = FilesCardProps & {
   id?: number
 }
-
 const files = ref<SelfFilesCardProps[]>([])
 
 function handleBeforUpload(file: any) {
-  consola.log('befor', file)
+  // // consola.log('befor', file)
   if (file.size > 1024 * 1024 * 2) {
     ElMessage.error('文件大小不能超过 2MB!')
     return false
   }
 }
 
-async function handleUploadDrop(files: any, props: any) {
-  consola.log('drop', files)
-  consola.log('props', props)
-
+async function handleUploadDrop(files: any, _props: any) {
+  // consola.log('drop', files)
+  // consola.log('props', props)
+  // useLogger().log('drop', props)
   if (files && files.length > 0) {
     if (files[0].type === '') {
       ElMessage.error('禁止上传文件夹！')
@@ -89,7 +89,7 @@ async function handleHttpRequest(options: any) {
 
 function handleDeleteCard(item: SelfFilesCardProps) {
   files.value = files.value.filter((items: any) => items.id !== item.id)
-  consola.log('delete', item)
+  // consola.log('delete', item)
   ElMessage.success('删除成功')
 }
 </script>

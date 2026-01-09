@@ -67,7 +67,6 @@ export default defineNuxtConfig({
     imports: {
       dirs: ['server/services/**', 'server/repositories/**', 'server/schemas/**', 'server/dto/**', 'server/entities/**', 'server/hooks/**', 'server/model/**', 'server/utils/**', 'server/factories/**'],
       presets: [
-        { from: 'consola', imports: ['consola'] },
         { from: 'moment', imports: [{ name: '*', as: 'moment' }] },
         { from: 'zod', imports: ['z', { name: 'z', type: true }] },
       ],
@@ -101,7 +100,7 @@ export default defineNuxtConfig({
   },
 
   mongoose: {
-    uri: process.env.NUXT_MONGOOSE_URI,
+    uri: runtimeConfig.MONGO.MONGOOSE_URI,
     options: { maxPoolSize: 20, minPoolSize: 1, autoIndex: true },
     modelsDir: 'models',
     devtools: true,
