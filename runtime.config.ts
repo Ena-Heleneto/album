@@ -8,6 +8,8 @@ const _runtime = {
     S3_ENDPOINT: process.env.NUXT_S3_ENDPOINT ?? 'http://127.0.0.1:9000',
     S3_ACCESS_KEY_ID: process.env.NUXT_S3_ACCESS_KEY_ID ?? '5qRTJWQ6ov4fCzeShAu8',
     S3_SECRET_ACCESS_KEY: process.env.NUXT_S3_SECRET_ACCESS_KEY ?? 'TU1ujmq4OgwL8AxH0d2EC9nr5DcVFWIMRKlQYzvs',
+    S3_BUCKET: process.env.NUXT_S3_BUCKET ?? 'album',
+    S3_BIZ: process.env.NUXT_S3_BIZ_BUCKET ?? 'album-biz',
   },
   LOG: {
     LOG_JSON: process.env.NUXT_LOG_JSON ?? 'false',

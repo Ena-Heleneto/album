@@ -1,4 +1,3 @@
-import process from 'node:process'
 import { pwa } from './app/config/pwa'
 import { appDescription } from './app/constants/index'
 import { runtimeConfig } from './runtime.config'
@@ -13,7 +12,7 @@ export default defineNuxtConfig({
       { from: 'three', imports: [{ name: '*', as: 'Three' }] },
     ],
     imports: [],
-    dirs: ['stores'],
+    dirs: ['stores', 'apis/**'],
   },
 
   devtools: { enabled: true },
@@ -46,14 +45,9 @@ export default defineNuxtConfig({
 
   future: { compatibilityVersion: 4 },
 
-  experimental: {
-    // when using generate, payload js assets included in sw precache manifest
-    // but missing on offline, disabling extraction it until fixed
-    payloadExtraction: false,
-    renderJsonPayloads: true,
-    typedPages: true,
-    asyncContext: true,
-  },
+  // when using generate, payload js assets included in sw precache manifest
+  // but missing on offline, disabling extraction it until fixed
+  experimental: { payloadExtraction: false, renderJsonPayloads: true, typedPages: true, asyncContext: true },
 
   compatibilityDate: '2024-08-14',
 
@@ -67,29 +61,14 @@ export default defineNuxtConfig({
     imports: {
       dirs: ['server/services/**', 'server/repositories/**', 'server/schemas/**', 'server/dto/**', 'server/entities/**', 'server/hooks/**', 'server/model/**', 'server/utils/**', 'server/factories/**'],
       presets: [
-        { from: 'moment', imports: [{ name: '*', as: 'moment' }] },
         { from: 'zod', imports: ['z', { name: 'z', type: true }] },
       ],
     },
     storage: {
       redis: { driver: 'redis', host: 'redis', port: 6379 },
-      mongodb: {
-        driver: 'mongodb',
-        connectionString: 'mongodb://album:album@127.0.0.1:27017/album?authSource=album',
-        databaseName: 'album',
-      },
+      mongodb: { driver: 'mongodb', connectionString: runtimeConfig.MONGO.MONGOOSE_URI, databaseName: 'album' },
     },
-    watchOptions: {
-      ignored: ['**/.devcontainer/docker_volumes/**'],
-    },
-  },
 
-  vite: {
-    server: {
-      watch: {
-        ignored: ['**/.devcontainer/docker_volumes/**'],
-      },
-    },
   },
 
   eslint: {

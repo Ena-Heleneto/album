@@ -13,18 +13,22 @@ export class BucketsService {
     try {
       const _headBucket = await $S3_CLIENT.send(new HeadBucketCommand({ Bucket: param.name }))
       const { httpStatusCode } = _headBucket.$metadata
-      return { httpStatusCode, status: 'not found', flag: true }
+      if (httpStatusCode !== 200)
+        throw new Error(`Head bucket ${param.name} failed, maybe not exist`)
+      return { httpStatusCode }
     }
     catch {
-      return { httpStatusCode: 404, status: 'not found', flag: false }
+      return { httpStatusCode: 404 }
     }
   }
 
   async createBucket(param: { name: string, region: string }) {
-    const { $S3_CLIENT, $log } = useNitroApp()
+    const { $S3_CLIENT } = useNitroApp()
 
-    const res = await $S3_CLIENT.send(new CreateBucketCommand({ Bucket: param.name }))
-    $log.info('S3 CreateBucket response', res)
+    const { $metadata } = await $S3_CLIENT.send(new CreateBucketCommand({ Bucket: param.name }))
+    const { httpStatusCode } = $metadata
+    if (httpStatusCode !== 200)
+      throw new Error(`Create bucket ${param.name} failed`)
   }
 
   async deleteBucket(param: { name: string }) {
