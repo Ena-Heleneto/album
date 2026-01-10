@@ -40,6 +40,10 @@ export class LogsUtil {
   trace(message?: unknown, ...args: unknown[]) {
     return this.consola.trace(this.meta, message, ...args)
   }
+
+  fail(message?: unknown, ...args: unknown[]) {
+    return this.consola.fail(this.meta, message, ...args)
+  }
 }
 
 export function safeJSONStringify(obj: unknown) {
