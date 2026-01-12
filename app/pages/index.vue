@@ -1,11 +1,5 @@
 <script lang="ts" setup>
-definePageMeta({
-  middleware: [
-    function () {
-      return navigateTo('/library', { redirectCode: 301 })
-    },
-  ],
-})
+definePageMeta({ middleware: [() => navigateTo('/library', { redirectCode: 301 })] })
 // import type { FilesCardProps } from 'vue-element-plus-x/types/FilesCard'
 
 // // import { useLogger } from '@nuxt/kit'

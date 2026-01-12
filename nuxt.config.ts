@@ -3,7 +3,7 @@ import { appDescription } from './app/constants/index'
 import { runtimeConfig } from './runtime.config'
 
 export default defineNuxtConfig({
-  modules: ['@vueuse/nuxt', '@unocss/nuxt', '@pinia/nuxt', '@nuxtjs/color-mode', '@vite-pwa/nuxt', '@nuxt/eslint', 'nuxt-mongoose', '@element-plus/nuxt'],
+  modules: ['@vueuse/nuxt', '@unocss/nuxt', '@pinia/nuxt', '@nuxtjs/color-mode', '@vite-pwa/nuxt', '@nuxt/eslint', 'nuxt-mongoose', '@element-plus/nuxt', 'nuxt-headlessui'],
 
   imports: {
     presets: [
