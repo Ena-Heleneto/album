@@ -3,7 +3,19 @@ import { appDescription } from './app/constants/index'
 import { runtimeConfig } from './runtime.config'
 
 export default defineNuxtConfig({
-  modules: ['@vueuse/nuxt', '@unocss/nuxt', '@pinia/nuxt', '@nuxtjs/color-mode', '@vite-pwa/nuxt', '@nuxt/eslint', 'nuxt-mongoose', '@element-plus/nuxt', 'nuxt-headlessui'],
+  modules: [
+    '@nuxt/ui',
+    '@vueuse/nuxt',
+    '@unocss/nuxt',
+    '@pinia/nuxt',
+    '@nuxtjs/color-mode',
+    'pinia-plugin-persistedstate/nuxt',
+    '@vite-pwa/nuxt',
+    '@nuxt/eslint',
+    'nuxt-mongoose',
+    '@element-plus/nuxt',
+    'nuxt-headlessui',
+  ],
 
   imports: {
     presets: [
@@ -22,8 +34,6 @@ export default defineNuxtConfig({
       viewport: 'width=device-width,initial-scale=1',
       link: [
         { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
-        // { rel: 'icon', type: 'image/svg+xml', href: '/nuxt.svg' },
-        // { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
       ],
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -35,7 +45,11 @@ export default defineNuxtConfig({
     },
   },
 
+  css: ['~/styles/css/main.css'],
+
   colorMode: { classSuffix: '' },
+
+  ui: { theme: { prefix: 'tw' }, fonts: false },
 
   runtimeConfig,
 

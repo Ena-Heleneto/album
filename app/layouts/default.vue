@@ -1,28 +1,16 @@
-<script setup lang="ts">
-// import { Welcome } from 'vue-element-plus-x'
-</script>
-
 <template>
-  <!-- <div size="screen" flex="~ col" gap="4" p="4">
-    <ClientOnly>
-      <Welcome title="Ena 的 边缘计算实验室💖" description="这是描述信息 ~" />
-      <template #fallback>
-        <p>Loading comments...</p>
-      </template>
-    </ClientOnly>
+  <!-- <UContainer flex="~" size="full">
+    <slot />
+  </UContainer> -->
 
-    <main flex="1 ~" items="center" justify="center">
-      <slot />
-    </main>
-  </div> -->
+  <div size="full" flex="~">
+    <div>
+      <LayoutDefaultMenu />
+    </div>
 
-  <div flex="~" size="screen">
-    <LayoutDefaultMenu />
-    <div flex="1 ~ col" h="full">
+    <div flex="1 ~ col">
       <LayoutDefaultHeader />
-      <main flex="1 " w="full">
-        <slot />
-      </main>
+      124
     </div>
   </div>
 </template>

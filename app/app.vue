@@ -1,18 +1,20 @@
 <script setup lang="ts">
 import { appName } from '~/constants'
 
-useHead({
-  title: appName,
-})
+useHead({ title: appName })
 </script>
 
 <template>
   <VitePwaManifest />
   <NuxtRouteAnnouncer />
   <NuxtLoadingIndicator />
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+  <UApp>
+    <UMain>
+      <NuxtLayout>
+        <NuxtPage />
+      </NuxtLayout>
+    </UMain>
+  </UApp>
 </template>
 
 <style>
