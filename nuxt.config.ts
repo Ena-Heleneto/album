@@ -13,8 +13,6 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt',
     '@nuxt/eslint',
     'nuxt-mongoose',
-    '@element-plus/nuxt',
-    'nuxt-headlessui',
   ],
 
   imports: {
