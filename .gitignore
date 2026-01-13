@@ -11,3 +11,4 @@ public/assets/fonts
 .pnpm-store
 .env
 .env.*
+pnpm-lock.yaml
