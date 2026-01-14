@@ -20,20 +20,16 @@ const groups = computed(() => [{
 </script>
 
 <template>
-  <UHeader>
-    <UModal :ui="{ content: 'tw:p-0', body: 'tw:p-0' }">
-      <UButton color="neutral" variant="subtle" icon="i-lucide-search" />
+  <UModal :ui="{ }">
+    <UButton color="neutral" variant="subtle" icon="i-lucide-search" w="lg" />
 
-      <template #body>
-        <div class="w-full">
-          <UCommandPalette
-            v-model:search-term="searchTerm"
-            :loading="status === 'pending'"
-            :groups="groups"
-            class="flex-1 h-80 w-full"
-          />
-        </div>
-      </template>
-    </UModal>
-  </UHeader>
+    <template #content>
+      <UCommandPalette
+        v-model:search-term="searchTerm"
+        :loading="status === 'pending'"
+        :groups="groups"
+        class="flex-1 h-80 w-full"
+      />
+    </template>
+  </UModal>
 </template>

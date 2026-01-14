@@ -23,6 +23,7 @@
     "@nuxt/eslint": "catalog:build",
     "@nuxt/ui": "catalog:frontend",
     "@nuxtjs/color-mode": "catalog:build",
+    "@nuxtjs/i18n": "10.2.1",
     "@openai/codex": "catalog:dev",
     "@pinia/nuxt": "catalog:build",
     "@unocss/eslint-config": "catalog:build",

@@ -1,2 +1,11 @@
 @import "tailwindcss" prefix(tw);  
 @import "@nuxt/ui";
+
+:root {
+  --ui-header-height: 0px;
+}
+
+
+* {
+  box-sizing: border-box;
+}

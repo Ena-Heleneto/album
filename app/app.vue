@@ -9,11 +9,11 @@ useHead({ title: appName })
   <NuxtRouteAnnouncer />
   <NuxtLoadingIndicator />
   <UApp>
-    <UMain>
-      <NuxtLayout>
-        <NuxtPage />
-      </NuxtLayout>
-    </UMain>
+    <!-- <UMain h="full"> -->
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+    <!-- </UMain> -->
   </UApp>
 </template>
 

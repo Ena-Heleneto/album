@@ -13,6 +13,7 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt',
     '@nuxt/eslint',
     'nuxt-mongoose',
+    '@nuxtjs/i18n',
   ],
 
   imports: {
