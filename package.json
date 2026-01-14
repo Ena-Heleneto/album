@@ -23,7 +23,7 @@
     "@nuxt/eslint": "catalog:build",
     "@nuxt/ui": "catalog:frontend",
     "@nuxtjs/color-mode": "catalog:build",
-    "@nuxtjs/i18n": "10.2.1",
+    "@nuxtjs/i18n": "catalog:build",
     "@openai/codex": "catalog:dev",
     "@pinia/nuxt": "catalog:build",
     "@unocss/eslint-config": "catalog:build",
@@ -47,7 +47,6 @@
     "tailwindcss": "catalog:frontend",
     "typescript": "catalog:dev",
     "unocss": "catalog:build",
-    "unocss-preset-theme": "catalog:frontend",
     "vue": "catalog:frontend",
     "vue-tsc": "catalog:dev",
     "zod": "catalog:build"

@@ -12,6 +12,7 @@ catalogs:
     '@nuxt/eslint': ^1.9.0
     '@nuxt/kit': ^4.2.0
     '@nuxtjs/color-mode': ^3.5.2
+    '@nuxtjs/i18n': 10.2.1
     '@pinia/nuxt': ^0.11.2
     '@unocss/eslint-config': ^66.5.4
     '@unocss/nuxt': ^66.5.4
@@ -44,7 +45,6 @@ catalogs:
     '@vueuse/core': ^14.0.0
     pinia: ^3.0.3
     tailwindcss: ^4.1.18
-    unocss-preset-theme: ^0.14.1
     vue: ^3.5.22
   icons:
     '@iconify/json': ^2.2.427

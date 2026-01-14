@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import * as locales from '@nuxt/ui/locale'
+
+const { locale, setLocale } = useI18n()
+</script>
+
 <template>
   <div size="full" flex="~" justify="between">
     <LayoutDefaultMenu />
@@ -5,17 +11,27 @@
     <div flex="1 ~ col" h="full" gap="2" min-h="0">
       <header
         flex="~" items="center" justify="between" p="4" content="after:empty" relative="~" gap="4"
-        absolute="after:~" w="after:full" h="after:1px" bg="after:stone-800/30" bottom="after:0" left="after:0"
+        absolute="after:~" w="after:full" h="after:1px" bg="after:divider-light dark:after:divider-dark" bottom="after:0" left="after:0"
       >
         <div flex="~" items="center" gap="4">
-          <LayoutDefaultSearch />
+          <LayoutDefaultHeaderSearch />
 
-          <UButton color="neutral" variant="subtle" icon="i-lucide-search">
+          <UButton color="neutral" variant="subtle" icon="i-lucide-search" shadow="none">
             UPLOAD
           </UButton>
+
+          <LayoutDefaultHeaderToggle />
         </div>
 
-        <div />
+        <div flex="~" items="center" gap="4">
+          <UColorModeButton />
+
+          <ULocaleSelect
+            :model-value="locale"
+            :locales="Object.values(locales)"
+            @update:model-value="setLocale($event as 'en' | 'zh')"
+          />
+        </div>
       </header>
 
       <main flex="1 " w="full">

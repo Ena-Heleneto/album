@@ -48,7 +48,10 @@ export default defineNuxtConfig({
 
   colorMode: { classSuffix: '' },
 
-  ui: { theme: { prefix: 'tw' }, fonts: false },
+  ui: {
+    theme: { prefix: 'tw' },
+    fonts: false,
+  },
 
   runtimeConfig,
 
@@ -90,6 +93,16 @@ export default defineNuxtConfig({
       nuxt: { sortConfigKeys: true },
     },
   },
+
+  i18n: {
+    defaultLocale: 'en',
+    locales: [
+      { code: 'en', name: 'English', file: 'en.json' },
+      { code: 'zh', name: '中文', file: 'zh.json' },
+    ],
+  },
+
+  icon: { serverBundle: { collections: ['hugeicons'] } },
 
   mongoose: {
     uri: runtimeConfig.MONGO.MONGOOSE_URI,

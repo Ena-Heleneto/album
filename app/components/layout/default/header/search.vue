@@ -20,8 +20,10 @@ const groups = computed(() => [{
 </script>
 
 <template>
-  <UModal :ui="{ }">
-    <UButton color="neutral" variant="subtle" icon="i-lucide-search" w="lg" />
+  <UModal>
+    <UButton color="neutral" variant="subtle" icon="i-lucide-search" w="lg" shadow="none">
+      Search images, albums, tags...
+    </UButton>
 
     <template #content>
       <UCommandPalette

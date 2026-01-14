@@ -5,6 +5,9 @@
   --ui-header-height: 0px;
 }
 
+.dark{
+  --ui-bg: #020203;
+}
 
 * {
   box-sizing: border-box;

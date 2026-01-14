@@ -2,7 +2,8 @@
   <div size="full" flex="~" items="center" justify="center">
     <h1 text="4xl" font="bold">
       <!-- Library Page -->
-      <LayoutDefaultToggle />
+      <!-- <LayoutDefaultToggle /> -->
+      {{ $t('welcome') }}
     </h1>
   </div>
 </template>
