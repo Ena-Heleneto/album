@@ -40,6 +40,7 @@
     "mongoose": "catalog:build",
     "nuxt": "catalog:build",
     "nuxt-mongoose": "catalog:build",
+    "opencode-ai": "catalog:dev",
     "pinia": "catalog:frontend",
     "pinia-plugin-persistedstate": "catalog:build",
     "puppeteer": "catalog:ci",
