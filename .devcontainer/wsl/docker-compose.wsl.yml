@@ -16,7 +16,7 @@ services:
     user: "1000:1000"
     restart: unless-stopped
     networks:
-      - album-workspace-network
+      - workspace-network
     depends_on:
       fix-perms:
         condition: service_completed_successfully
@@ -28,7 +28,7 @@ services:
       - rustfs-data:/data
       - rustfs-logs:/logs
     networks:
-      - album-workspace-network
+      - workspace-network
 
   redis:
     image: redis
@@ -44,7 +44,7 @@ services:
       - redis-data:/data
     restart: unless-stopped
     networks:
-      - album-workspace-network
+      - workspace-network
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 5s
@@ -65,7 +65,7 @@ services:
       - ../scripts/mongodb/init:/docker-entrypoint-initdb.d:ro
     restart: unless-stopped
     networks:
-      - album-workspace-network
+      - workspace-network
     healthcheck:
       test: ["CMD", "mongosh", "--quiet", "mongodb://localhost:27017/admin", "--eval", "db.runCommand({ ping: 1 })"]
       interval: 10s
@@ -81,7 +81,7 @@ services:
     volumes:
       - mongodb-data:/data/db
     networks:
-      - album-workspace-network
+      - workspace-network
 
   dozzle:
     container_name: dozzle
@@ -92,7 +92,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
-      - album-workspace-network
+      - workspace-network
 
 volumes:
   rustfs-data:
@@ -101,5 +101,5 @@ volumes:
   mongodb-data:
 
 networks:
-  album-workspace-network:
-    driver: bridge
+  workspace-network:
+    external: true
