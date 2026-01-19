@@ -102,7 +102,7 @@ export default defineNuxtConfig({
     ],
   },
 
-  icon: { serverBundle: { collections: ['hugeicons'] } },
+  icon: { serverBundle: { collections: ['hugeicons', 'lucide'] } },
 
   mongoose: {
     uri: runtimeConfig.MONGO.MONGOOSE_URI,

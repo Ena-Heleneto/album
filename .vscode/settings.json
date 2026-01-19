@@ -36,18 +36,7 @@
   ],
 
   // Enable eslint for all supported languages
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "vue",
-    "html",
-    "markdown",
-    "json",
-    "jsonc",
-    "yaml"
-  ],
+  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "html", "markdown", "json", "jsonc", "yaml"],
   "interline-translate.knownPopularWordCount": 6000,
   "iconify.annotations": true,
   "iconify.inplace": true,
@@ -65,10 +54,14 @@
     "persistedstate",
     "Presign",
     "rustfs",
+    "usermod",
     "virtuals"
   ],
   "files.autoSave": "afterDelay",
   "remote.autoForwardPorts": true,
   "remote.autoForwardPortsSource": "hybrid",
-  "chatgpt.openOnStartup": true
+  "chatgpt.openOnStartup": true,
+  "i18n-ally.localesPaths": ["i18n/locales"],
+  "i18n-ally.keystyle": "auto",
+  "editor.tabSize": 2
 }

@@ -34,8 +34,16 @@ const { locale, setLocale } = useI18n()
         </div>
       </header>
 
-      <main flex="1 " w="full">
-        <slot />
+      <main w="full" p="4" flex="~ col 1" min="h-0" gap="4">
+        <div>
+          <h1 text="2xl" font="semibold" > 
+            Upload
+          </h1>
+          <span>Drag and drop files or click to upload</span>
+        </div>
+        <div w="full" flex="1">
+          <slot />
+        </div>
       </main>
     </div>
   </div>
