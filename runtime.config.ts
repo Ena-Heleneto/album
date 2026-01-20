@@ -17,6 +17,13 @@ const _runtime = {
     LOG_BACKEND_TAG: process.env.NUXT_LOG_BACKEND_TAG ?? 'nitro',
     LOG_FRONTEND_TAG: process.env.NUXT_LOG_FRONTEND_TAG ?? 'nuxt',
   },
+
+  public: {
+    MAX_FILE_SIZE: 2 * 1024 * 1024,
+    MIN_DIMENSIONS: { width: 200, height: 200 },
+    MAX_DIMENSIONS: { width: 4096, height: 4096 },
+    ACCEPTED_IMAGE_TYPES: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'],
+  },
 }
 
 export default _runtime
