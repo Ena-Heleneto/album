@@ -1,5 +1,5 @@
 <template>
-  <div size="full" flex="~" min="w-0" gap="4">
+  <div size="full" flex="~" h="full" min="w-0" gap="5xl">
     <UploadsPicker />
     <UploadsOption />
   </div>

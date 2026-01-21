@@ -1,51 +1,60 @@
 <script setup lang="ts">
-import type { FormError, FormSubmitEvent } from '@nuxt/ui'
+const state = ref({ visibility: 'Public', expiry: 'Never', password: undefined, watermark: false, album: 'Nature Collection' })
 
-const state = reactive({ visibility: 'Public', password: undefined })
-
-type Schema = typeof state
-
-function validate(state: Partial<Schema>): FormError[] {
-  const errors = []
-  if (!state.visibility)
-    errors.push({ name: 'visibility', message: 'Required' })
-  if (!state.password)
-    errors.push({ name: 'password', message: 'Required' })
-  return errors
-}
-
-const toast = useToast()
-async function onSubmit(event: FormSubmitEvent<Schema>) {
-  toast.add({ title: 'Success', description: 'The form has been submitted.', color: 'success' })
-  consola.log(event.data)
-}
-
-const items = ref(['Public', 'Private'])
+const visibilityItems = ref(['Public', 'Private'])
+const visibilityLabels = computed(() => ({ Public: 'Anyone with the link can view', Private: 'Only you can view' }[state.value.visibility]))
+const expiryItems = ref(['Never', '7 Day', '30 Day', 'Custom'])
+const albumItems = ref(['Nature Collection', 'Travel Memories', 'Portraits', 'Architecture', 'Street Photography', 'Food & Lifestyle'])
 </script>
 
 <template>
-  <div p="4" flex="~ col" min="w-1/5" bg="#d6d3d1 dark:#070709" rounded="2xl">
-    <span text="lg" font="bold">Upload Options</span>
+  <div p="4" flex="~ col" w="1/4" bg="#d6d3d1 dark:#070709" rounded="2xl" h="lg">
+    <span text="md" font="bold" mb="xl">Upload Options</span>
 
-    <UForm :validate="validate" :state="state" class="tw:mb-4 tw:space-y-4" @submit="onSubmit">
+    <UForm :state="state" class="tw:mb-4 tw:space-y-4">
       <UFormField orientation="horizontal" name="visibility" class="tw:items-center">
         <template #label>
           <div flex="~ col" gap="1">
-            <span text="lg">Visibility</span>
-            <span text="sm">Only you can view</span>
+            <span text="sm">Visibility</span>
+            <span text="xs">{{ visibilityLabels }}</span>
           </div>
         </template>
 
-        <USelect v-model="state.visibility" arrow :items="items" class="tw:w-30" />
+        <USelect v-model="state.visibility" arrow :items="visibilityItems" class="tw:w-30" />
       </UFormField>
 
-      <UFormField orientation="horizontal" label="Password" name="password" class="tw:items-center">
-        <template #label />
+      <UFormField orientation="horizontal" name="expiry" class="tw:items-center">
+        <template #label>
+          <div flex="~ col" gap="1">
+            <span text="sm">Link Expiry</span>
+            <span text="xs">When shared links expire</span>
+          </div>
+        </template>
+
+        <USelect v-model="state.expiry" arrow :items="expiryItems" class="tw:w-30" />
       </UFormField>
 
-      <UButton type="submit">
-        Submit
-      </UButton>
+      <UFormField orientation="horizontal" name="watermark" class="tw:items-center">
+        <template #label>
+          <div flex="~ col" gap="1">
+            <span text="sm">Watermark</span>
+            <span text="xs">Add watermark to shared images</span>
+          </div>
+        </template>
+
+        <USwitch v-model="state.watermark" />
+      </UFormField>
+
+      <UFormField orientation="horizontal" name="album" class="tw:items-center">
+        <template #label>
+          <div flex="~ col" gap="1">
+            <span text="sm">Target Album</span>
+            <span text="xs">Add uploads to an album</span>
+          </div>
+        </template>
+
+        <USelect v-model="state.album" arrow :items="albumItems" class="tw:w-30" />
+      </UFormField>
     </UForm>
   </div>
 </template>

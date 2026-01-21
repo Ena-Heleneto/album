@@ -13,11 +13,9 @@ useHead({ title: appName })
   <NuxtRouteAnnouncer />
   <NuxtLoadingIndicator />
   <UApp :locale="uiLocale">
-    <!--  <UMain h="full"> -->
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
-    <!-- </UMain> -->
   </UApp>
 </template>
 

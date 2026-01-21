@@ -11,7 +11,8 @@ const { locale, setLocale } = useI18n()
     <div flex="1 ~ col" h="full" gap="2" min-h="0">
       <header
         flex="~" items="center" justify="between" p="4" content="after:empty" relative="~" gap="4"
-        absolute="after:~" w="after:full" h="after:1px" bg="after:divider-light dark:after:divider-dark" bottom="after:0" left="after:0"
+        absolute="after:~" w="after:full" h="after:1px" bg="after:divider-light dark:after:divider-dark"
+        bottom="after:0" left="after:0"
       >
         <div flex="~" items="center" gap="4">
           <LayoutDefaultHeaderSearch />
@@ -34,14 +35,14 @@ const { locale, setLocale } = useI18n()
         </div>
       </header>
 
-      <main w="full" p="4" flex="~ col 1" min="h-0" gap="4">
+      <main w="full" p="y-4 x-7xl" flex="~ col 1" min="h-0" gap="4">
         <div>
-          <h1 text="2xl" font="semibold" > 
+          <h1 text="2xl" font="semibold">
             Upload
           </h1>
           <span>Drag and drop files or click to upload</span>
         </div>
-        <div w="full" flex="1">
+        <div w="full" flex="1" min-h="0">
           <slot />
         </div>
       </main>
