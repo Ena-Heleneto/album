@@ -80,25 +80,15 @@ onBeforeUnmount(() => {
     @change="handleChange"
   >
     <template #file="{ file, index }">
-      {{ consola.info('Custom rendering file item:', file, index) }}
       <div flex="~" items="center" gap="4" w="full">
-        <NuxtImg v-if="file.preview" v-slot="{ src, imgAttrs }" custom :src="file.preview">
-          <img
-            :src="src"
-            v-bind="imgAttrs"
-            class="tw:h-full tw:w-auto tw:block tw:object-contain"
-            alt=""
-          >
-        </NuxtImg>
+        <NuxtImg v-if="file.preview" size="40px" fit="cover" :src="file.preview" />
         <div flex="~ col" w="full" justify="between" items="start" gap="2">
-          <div class="tw:p-4 tw:border tw:rounded tw:mb-2">
-            <div class="tw-font-bold">
-              File {{ index + 1 }}: {{ file.name }}
-            </div>
-            <div>Size: {{ (file.size / 1024).toFixed(2) }} KB</div>
-            <div v-if="file.progress !== undefined">
-              Progress: {{ file.progress }}%
-            </div>
+          <div class="tw-font-bold">
+            File {{ index + 1 }}: {{ file.name }}
+          </div>
+          <div>Size: {{ (file.size / 1024).toFixed(2) }} KB</div>
+          <div v-if="file.progress !== undefined">
+``            Progress: {{ file.progress }}%
           </div>
 
           <UProgress v-model="file.progress" />
