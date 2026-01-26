@@ -1,9 +1,10 @@
 <script setup lang="ts">
-type UploadingFile = File & { progress?: number }
+type UploadingFile = File & { progress?: number, preview?: string }
 
 const fileModel = defineModel<UploadingFile[]>({ default: [] })
 
 const progressIntervals = new Map<UploadingFile, ReturnType<typeof setInterval>>()
+const previewUrls = new Map<UploadingFile, string>()
 
 function handleUpload(files: UploadingFile[]) {
   consola.info('Uploading files:', files)
@@ -34,7 +35,24 @@ const _fileModel = computed({
   get: () => fileModel.value,
   set: (v: UploadingFile[]) => {
     const next = [...v]
-    next.forEach(element => element.progress = 10)
+
+    const removed = fileModel.value.filter(file => !next.includes(file))
+    removed.forEach((file) => {
+      const url = previewUrls.get(file)
+      if (url) {
+        URL.revokeObjectURL(url)
+        previewUrls.delete(file)
+      }
+    })
+
+    next.forEach((file) => {
+      if (!previewUrls.has(file)) {
+        const url = URL.createObjectURL(file)
+        previewUrls.set(file, url)
+        file.preview = url
+      }
+      file.progress = 10
+    })
     fileModel.value = next
     handleUpload(next)
   },
@@ -47,6 +65,9 @@ async function handleChange(e: Event) {
 onBeforeUnmount(() => {
   progressIntervals.forEach(clearInterval)
   progressIntervals.clear()
+
+  previewUrls.forEach(url => URL.revokeObjectURL(url))
+  previewUrls.clear()
 })
 </script>
 
@@ -61,20 +82,27 @@ onBeforeUnmount(() => {
     <template #file="{ file, index }">
       {{ consola.info('Custom rendering file item:', file, index) }}
       <div flex="~" items="center" gap="4" w="full">
-        
-      <div flex="~ col" w="full" justify="between" items="start" gap="2">
-        <div class="tw-p-4 tw-border tw-rounded tw-mb-2">
-          <div class="tw-font-bold">
-            File {{ index + 1 }}: {{ file.name }}
+        <NuxtImg v-if="file.preview" v-slot="{ src, imgAttrs }" custom :src="file.preview">
+          <img
+            :src="src"
+            v-bind="imgAttrs"
+            class="tw:h-full tw:w-auto tw:block tw:object-contain"
+            alt=""
+          >
+        </NuxtImg>
+        <div flex="~ col" w="full" justify="between" items="start" gap="2">
+          <div class="tw:p-4 tw:border tw:rounded tw:mb-2">
+            <div class="tw-font-bold">
+              File {{ index + 1 }}: {{ file.name }}
+            </div>
+            <div>Size: {{ (file.size / 1024).toFixed(2) }} KB</div>
+            <div v-if="file.progress !== undefined">
+              Progress: {{ file.progress }}%
+            </div>
           </div>
-          <div>Size: {{ (file.size / 1024).toFixed(2) }} KB</div>
-          <div v-if="file.progress !== undefined">
-            Progress: {{ file.progress }}%
-          </div>
-        </div>
 
-        <UProgress v-model="file.progress" />
-      </div>
+          <UProgress v-model="file.progress" />
+        </div>
       </div>
     </template>
   </UFileUpload>
