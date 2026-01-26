@@ -4,7 +4,7 @@ const { menuList } = storeToRefs(useMenuStore())
 
 <template>
   <div
-    relative="~" absolute="after:~" w="after:1px" h="after:full" bg="after:divider-light dark:after:divider-dark"
+    relative="~" absolute="after:~" w="after:1px" h="after:full full" bg="after:divider-light dark:after:divider-dark"
     top="after:0" right="after:0" content="after:empty"
   >
     <div

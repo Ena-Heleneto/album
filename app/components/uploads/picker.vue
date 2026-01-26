@@ -1,13 +1,38 @@
 <script setup lang="ts">
-const fileModel = defineModel<File[]>({ default: [] })
+type UploadingFile = File & { progress?: number }
 
-function handleUpload(v: File[]) {
-  consola.info('Uploading files:', v)
+const fileModel = defineModel<UploadingFile[]>({ default: [] })
+
+const progressIntervals = new Map<UploadingFile, ReturnType<typeof setInterval>>()
+
+function handleUpload(files: UploadingFile[]) {
+  consola.info('Uploading files:', files)
+
+  files.forEach((file) => {
+    const existing = progressIntervals.get(file)
+    if (existing) {
+      clearInterval(existing)
+    }
+
+    const interval = setInterval(() => {
+      const nextProgress = Math.min((file.progress ?? 0) + 10, 100)
+      file.progress = nextProgress
+      // Reassign to refresh the view as progress updates.
+      fileModel.value = [...fileModel.value]
+
+      if (nextProgress >= 100) {
+        clearInterval(interval)
+        progressIntervals.delete(file)
+      }
+    }, 100)
+
+    progressIntervals.set(file, interval)
+  })
 }
 
 const _fileModel = computed({
   get: () => fileModel.value,
-  set: (v) => {
+  set: (v: UploadingFile[]) => {
     const next = [...v]
     next.forEach(element => element.progress = 10)
     fileModel.value = next
@@ -18,6 +43,11 @@ const _fileModel = computed({
 async function handleChange(e: Event) {
   consola.info('File changed:', e)
 }
+
+onBeforeUnmount(() => {
+  progressIntervals.forEach(clearInterval)
+  progressIntervals.clear()
+})
 </script>
 
 <template>
@@ -30,14 +60,21 @@ async function handleChange(e: Event) {
   >
     <template #file="{ file, index }">
       {{ consola.info('Custom rendering file item:', file, index) }}
-      <div class="tw-p-4 tw-border tw-rounded tw-mb-2">
-        <div class="tw-font-bold">
-          File {{ index + 1 }}: {{ file.name }}
+      <div flex="~" items="center" gap="4" w="full">
+        
+      <div flex="~ col" w="full" justify="between" items="start" gap="2">
+        <div class="tw-p-4 tw-border tw-rounded tw-mb-2">
+          <div class="tw-font-bold">
+            File {{ index + 1 }}: {{ file.name }}
+          </div>
+          <div>Size: {{ (file.size / 1024).toFixed(2) }} KB</div>
+          <div v-if="file.progress !== undefined">
+            Progress: {{ file.progress }}%
+          </div>
         </div>
-        <div>Size: {{ (file.size / 1024).toFixed(2) }} KB</div>
-        <div v-if="file.progress !== undefined">
-          Progress: {{ file.progress }}%
-        </div>
+
+        <UProgress v-model="file.progress" />
+      </div>
       </div>
     </template>
   </UFileUpload>

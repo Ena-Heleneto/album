@@ -14,6 +14,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     'nuxt-mongoose',
     '@nuxtjs/i18n',
+    '@nuxt/image',
   ],
 
   imports: {
@@ -103,6 +104,8 @@ export default defineNuxtConfig({
   },
 
   icon: { serverBundle: { collections: ['hugeicons', 'lucide'] } },
+
+  image: { },
 
   mongoose: {
     uri: runtimeConfig.MONGO.MONGOOSE_URI,

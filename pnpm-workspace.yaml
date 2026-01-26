@@ -1,9 +1,6 @@
-shellEmulator: true
-
-trustPolicy: no-downgrade
 packages: []
 
-catalog:
+catalog: null
 
 catalogs:
   build:
@@ -56,5 +53,10 @@ onlyBuiltDependencies:
   - esbuild
   - opencode-ai
   - puppeteer
+  - sharp
   - unrs-resolver
   - vue-demi
+
+shellEmulator: true
+
+trustPolicy: no-downgrade

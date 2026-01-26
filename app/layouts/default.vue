@@ -12,7 +12,7 @@ const { locale, setLocale } = useI18n()
       <header
         flex="~" items="center" justify="between" p="4" content="after:empty" relative="~" gap="4"
         absolute="after:~" w="after:full" h="after:1px" bg="after:divider-light dark:after:divider-dark"
-        bottom="after:0" left="after:0"
+        bottom="after:0" left="after:0" 
       >
         <div flex="~" items="center" gap="4">
           <LayoutDefaultHeaderSearch />
