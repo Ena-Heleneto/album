@@ -1,34 +1,40 @@
 <script setup lang="ts">
 type UploadingFile = File & { progress?: number, preview?: string }
 
+const emits = defineEmits<{
+  upload: [files: UploadingFile[]]
+}>()
+
 const fileModel = defineModel<UploadingFile[]>({ default: [] })
 
 const progressIntervals = new Map<UploadingFile, ReturnType<typeof setInterval>>()
 const previewUrls = new Map<UploadingFile, string>()
 
 function handleUpload(files: UploadingFile[]) {
-  consola.info('Uploading files:', files)
+  // consola.info('Uploading files:', files)
 
-  files.forEach((file) => {
-    const existing = progressIntervals.get(file)
-    if (existing) {
-      clearInterval(existing)
-    }
+  // files.forEach((file) => {
+  //   const existing = progressIntervals.get(file)
+  //   if (existing) {
+  //     clearInterval(existing)
+  //   }
 
-    const interval = setInterval(() => {
-      const nextProgress = Math.min((file.progress ?? 0) + 10, 100)
-      file.progress = nextProgress
-      // Reassign to refresh the view as progress updates.
-      fileModel.value = [...fileModel.value]
+  //   const interval = setInterval(() => {
+  //     const nextProgress = Math.min((file.progress ?? 0) + 10, 100)
+  //     file.progress = nextProgress
+  //     // Reassign to refresh the view as progress updates.
+  //     fileModel.value = [...fileModel.value]
 
-      if (nextProgress >= 100) {
-        clearInterval(interval)
-        progressIntervals.delete(file)
-      }
-    }, 100)
+  //     if (nextProgress >= 100) {
+  //       clearInterval(interval)
+  //       progressIntervals.delete(file)
+  //     }
+  //   }, 100)
 
-    progressIntervals.set(file, interval)
-  })
+  //   progressIntervals.set(file, interval)
+  // })
+
+  emits('upload', files)
 }
 
 const _fileModel = computed({
@@ -81,14 +87,14 @@ onBeforeUnmount(() => {
   >
     <template #file="{ file, index }">
       <div flex="~" items="center" gap="4" w="full">
-        <NuxtImg v-if="file.preview" size="40px" fit="cover" :src="file.preview" />
+        <NuxtImg v-if="file.preview" size="20" fit="inside" class="tw:rounded-lg" :src="file.preview" />
         <div flex="~ col" w="full" justify="between" items="start" gap="2">
-          <div class="tw-font-bold">
-            File {{ index + 1 }}: {{ file.name }}
+          <div font="bold">
+            {{ file.name }}
           </div>
           <div>Size: {{ (file.size / 1024).toFixed(2) }} KB</div>
           <div v-if="file.progress !== undefined">
-``            Progress: {{ file.progress }}%
+            Progress: {{ file.progress }}%
           </div>
 
           <UProgress v-model="file.progress" />
