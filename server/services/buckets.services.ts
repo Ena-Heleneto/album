@@ -7,7 +7,7 @@ export class BucketsService {
 
   #transaction: Transaction
 
-  async HeadBucket(param: { name: string }) {
+  async headBucket(param: { name: string }) {
     const { $S3_CLIENT } = useNitroApp()
 
     try {

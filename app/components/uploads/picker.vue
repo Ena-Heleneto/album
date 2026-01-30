@@ -7,35 +7,34 @@ const emits = defineEmits<{
 
 const fileModel = defineModel<UploadingFile[]>({ default: [] })
 
-const progressIntervals = new Map<UploadingFile, ReturnType<typeof setInterval>>()
 const previewUrls = new Map<UploadingFile, string>()
 
-function handleUpload(files: UploadingFile[]) {
-  // consola.info('Uploading files:', files)
+// function handleUpload(files: UploadingFile[]) {
+//   // consola.info('Uploading files:', files)
 
-  // files.forEach((file) => {
-  //   const existing = progressIntervals.get(file)
-  //   if (existing) {
-  //     clearInterval(existing)
-  //   }
+// files.forEach((file) => {
+//   const existing = progressIntervals.get(file)
+//   if (existing) {
+//     clearInterval(existing)
+//   }
 
-  //   const interval = setInterval(() => {
-  //     const nextProgress = Math.min((file.progress ?? 0) + 10, 100)
-  //     file.progress = nextProgress
-  //     // Reassign to refresh the view as progress updates.
-  //     fileModel.value = [...fileModel.value]
+//   const interval = setInterval(() => {
+//     const nextProgress = Math.min((file.progress ?? 0) + 10, 100)
+//     file.progress = nextProgress
+//     // Reassign to refresh the view as progress updates.
+//     fileModel.value = [...fileModel.value]
 
-  //     if (nextProgress >= 100) {
-  //       clearInterval(interval)
-  //       progressIntervals.delete(file)
-  //     }
-  //   }, 100)
+//     if (nextProgress >= 100) {
+//       clearInterval(interval)
+//       progressIntervals.delete(file)
+//     }
+//   }, 100)
 
-  //   progressIntervals.set(file, interval)
-  // })
+//   progressIntervals.set(file, interval)
+// })
 
-  emits('upload', files)
-}
+//   emits('upload', files)
+// }
 
 const _fileModel = computed({
   get: () => fileModel.value,
@@ -60,7 +59,8 @@ const _fileModel = computed({
       file.progress = 10
     })
     fileModel.value = next
-    handleUpload(next)
+    // handleUpload(next)
+    emits('upload', next)
   },
 })
 
@@ -69,8 +69,8 @@ async function handleChange(e: Event) {
 }
 
 onBeforeUnmount(() => {
-  progressIntervals.forEach(clearInterval)
-  progressIntervals.clear()
+  // progressIntervals.forEach(clearInterval)
+  // progressIntervals.clear()
 
   previewUrls.forEach(url => URL.revokeObjectURL(url))
   previewUrls.clear()
